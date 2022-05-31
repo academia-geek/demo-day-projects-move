@@ -1,16 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import NavBar from "../Navbar";
 
 const Home = () => {
-  return (
-    <div>
-      <h1>ESTE ES EL REGISTER</h1>
-      <hr />
-      <Link to="/login">Login</Link>
-      <hr />
-      <Link to="/signup">Sign Up</Link>
-    </div>
-  );
+  return <NavBar />;
 };
 
 export default Home;
