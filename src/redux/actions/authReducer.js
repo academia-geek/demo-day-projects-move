@@ -1,6 +1,5 @@
 import { types } from "../types/types";
 
-
 import {
   createUserWithEmailAndPassword,
   deleteUser,
