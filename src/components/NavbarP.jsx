@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
-const Nabvar = () => {
+const NabvarP = () => {
   return (
     <>  
   <Navbar expand="lg" bg="light">
@@ -15,7 +15,14 @@ const Nabvar = () => {
         />{' '}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse className='justify-content-end'>    
+  <Navbar.Collapse className='justify-content-end'>   
+  <Nav.Link href="#action1">Bienvenidos</Nav.Link>
+        <Nav.Link href="#action2">¿Quienes Somos?</Nav.Link>
+        <NavDropdown title="Preguntas Frecuentes" id="navbarScrollingDropdown">
+          <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+          <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+          <NavDropdown.Divider />          
+        </NavDropdown> 
     <Nav className='d-grid gap-2 d-flex '>
     <Button href='/login' variant="success">Iniciar Sesión</Button>
     <Button href='/register' variant="outline-success">Registrarse</Button>
@@ -27,4 +34,4 @@ const Nabvar = () => {
   )
 }
 
-export default Nabvar
+export default NabvarP

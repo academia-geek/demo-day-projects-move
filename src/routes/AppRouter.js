@@ -1,9 +1,9 @@
-import Nabvar from "../components/Nabvar";
+import HomePublic from "../components/HomePublic";
 
 function AppRouter() {
   return (
     <div>
-      <Nabvar/>
+      <HomePublic/>
     </div>
   );
 }
