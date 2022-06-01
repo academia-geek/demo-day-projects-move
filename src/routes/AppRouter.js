@@ -1,5 +1,6 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
@@ -15,10 +16,16 @@ const AppRouter = () => {
 
   useEffect(() => {
     const auth = getAuth();
+    //obtenga el usuario
     onAuthStateChanged(auth, (user) => {
       if (user?.uid) {
         console.log("User is logged in");
         setIsLoggedIn(true);
+
+        //traer el token 
+        user.getIdToken()
+        .then((token)=>{console.log('El token es: ', token)})
+
       } else {
         setIsLoggedIn(false);
       }
@@ -27,7 +34,9 @@ const AppRouter = () => {
   }, [setIsLoggedIn, setChecking, isLoggedIn]);
 
   if (checking) {
-    return <h1>Espere....</h1>;
+    return <div>
+    <Spinner animation="border" variant="success" />
+</div>
   }
   return (
     <BrowserRouter>
