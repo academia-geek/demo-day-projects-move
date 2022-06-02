@@ -68,7 +68,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsdoc(swaggerSpec))
 connectDatabase()
     .then(() => {
         app.use(morgan("dev"));
-        app.use("/vehicle", vehicleRouter)
+        app.use("/vehicles", vehicleRouter)
         app.use("/auth", authRouter)
         app.listen(app.get("port"), () => {
             console.log(`Server running on port ${app.get("port")}`);
