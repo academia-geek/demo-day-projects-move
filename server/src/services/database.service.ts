@@ -9,7 +9,7 @@ export const collectionUsers: { users?: mongoDB.Collection<Users> } = {}
 export const connectDatabase = async () => {
     dotenv.config()
 
-    const client = new mongoDB.MongoClient(process.env.DB_CONN_STRING || process.env.DB_CONN_STRING_DOCKER)
+    const client = new mongoDB.MongoClient(process.env.MONGO_DEVELOPMENT)
 
     await client.connect()
 
@@ -18,7 +18,7 @@ export const connectDatabase = async () => {
     // await applySchemaValidation(db);
 
     // vehicles
-    const vehiclesCollection = db.collection<vehicles>(process.env.vehicle_COLLECTION_NAME)
+    const vehiclesCollection = db.collection<vehicles>(process.env.VEHICLE_COLLECTION_NAME)
     collectionvehicles.vehicles = vehiclesCollection
 
     // Users
@@ -53,11 +53,12 @@ const applySchemaValidation = async (db: mongoDB.Db) => {
     }
 
     await db.command({
-        collMod: process.env.vehicle_COLLECTION_NAME,
+        collMod: process.env.VEHICLE_COLLECTION_NAME="vehicle"
+        ,
         validator: jsonSchema
     }).catch(async (error: mongoDB.MongoServerError) => {
         if (error.codeName === 'NamespaceNotFound') {
-            await db.createCollection(process.env.vehicle_COLLECTION_NAME, { validator: jsonSchema });
+            await db.createCollection(process.env.VEHICLE_COLLECTION_NAME, { validator: jsonSchema });
         }
     })
 }
