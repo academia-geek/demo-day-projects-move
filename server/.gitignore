@@ -1,0 +1,15 @@
+.vscode/
+node_modules/
+node_modules
+.DS_Store
+
+# Ignore built ts files
+dist/**/*
+dist
+
+# Ignore .env file for secrets
+.env
+
+# Ignore file firebase keys secrets
+src/firebase/serviceAccountKey.json
+src/firebase/.firebase

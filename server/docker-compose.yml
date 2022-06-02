@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  api:
+    container_name: api-vehicles
+    restart: always
+    build: .
+    ports:
+      - "5000:5000"
+    links:
+      - mongo
+    # volumes:
+    #   - .:/app
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27022:27017"
