@@ -60,6 +60,8 @@
  *  get:
  *    summary: List all vehicles
  *    tags: [vehicles]
+ *    security:
+ *      - BearerAuth: []
  *    responses:
  *      200:
  *          description: A list of vehicles
@@ -76,6 +78,8 @@
  *  get:
  *      summary: List by id of the vehicle
  *      tags: [vehicles]
+ *      security:
+ *          - BearerAuth: []
  *      parameters:
  *          - in: path
  *            name: id
@@ -98,6 +102,8 @@
  *  post:
  *      summary: Create a new vehicle
  *      tags: [vehicles]
+ *      security:
+ *          - BearerAuth: []
  *      requestBody:
  *          required: true
  *          content:
@@ -121,6 +127,8 @@
  *  put:
  *      summary: Update a vehicle
  *      tags: [vehicles]
+ *      security:
+ *          - BearerAuth: []
  *      parameters:
  *          - in: path
  *            name: id
@@ -145,6 +153,8 @@
  *  delete:
  *      summary: Delete a vehicle
  *      tags: [vehicles]
+ *      security:
+ *          - BearerAuth: []
  *      parameters:
  *          - in: path
  *            name: id

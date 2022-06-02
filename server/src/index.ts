@@ -38,23 +38,6 @@ const swaggerSpec = {
                 description: "Local"
             }
         ],
-        components: {
-            securitySchemes: {
-                bearerAuth: {
-                    type: "http",
-                    scheme: "bearer",
-                    in: "header",
-                },
-            },
-        },
-        security: [
-            {
-                bearerAuth: {
-                    type: "http",
-                    scheme: "bearer",
-                },
-            },
-        ],
     },
     apis: ['./dist/docs/*.js']
 
@@ -68,14 +51,14 @@ app.get('/', (req, res) => {
             urlLocal: "http://localhost:5000/auth/login",
             urlServer: "http://34.66.155.91:5000/auth/login",
             pd: "Si no tienes creada una cuenta para logearte puedes ingresar a la siguiente url: http://localhost:5000/auth/signin o http://34.66.155.91:5000/auth/signin"
-        }, 
+        },
         {
             info: "Servidor local con token",
             url: "http://localhost:5000/vehicle"
-        }, 
-        { 
+        },
+        {
             info: "Servidor Cloud con token",
-            url: "http://34.66.155.91:5000/vehicle" 
+            url: "http://34.66.155.91:5000/vehicle"
         }
     ])
 })

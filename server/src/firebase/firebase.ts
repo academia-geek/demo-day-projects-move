@@ -23,4 +23,4 @@ admin.initializeApp({
 })
 
 
-export default { app, admin}
+export default { app, admin }
