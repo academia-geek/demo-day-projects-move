@@ -4,6 +4,7 @@ import { Spinner } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
+import Sidebar from "../components/Sidebar";
 import SignUp from "../components/SignUp/SignUp";
 import Vehicles from "../components/Vehicles/Vehicles";
 import { PrivateRoutes } from "./PrivateRoutes";
@@ -65,10 +66,12 @@ const AppRouter = () => {
             </PublicRoutes>
           }
         />
+        
         <Route
           path="/vehicles"
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar/>
               <Vehicles />
             </PrivateRoutes>
           }
