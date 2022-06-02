@@ -1,14 +1,15 @@
 import * as mongoDB from "mongodb";
-import * as dotenv from "dotenv";
-import { vehicles } from "../models/vehicle";
+import {COLLECTION_VEHICLES, COLLECTION_USERS, COLLECTION_PRICES} from "../application/config/environment";
+/* import { vehicles } from "../models/vehicles";
 import { Users } from "../models/users";
+import { Users } from "../models/users"; */
+import {Prices, Users, Vehicles} from "../models/index";
 
-export const collectionvehicles: { vehicles?: mongoDB.Collection<vehicles> } = {}
+export const collectionVehicles: { vehicles?: mongoDB.Collection<Vehicles> } = {}
 export const collectionUsers: { users?: mongoDB.Collection<Users> } = {}
+export const collectionPrices: { prices?: mongoDB.Collection<Prices> } = {}
 
 export const connectDatabase = async () => {
-    dotenv.config()
-
     const client = new mongoDB.MongoClient(process.env.MONGO_DEVELOPMENT)
 
     await client.connect()
@@ -18,47 +19,16 @@ export const connectDatabase = async () => {
     // await applySchemaValidation(db);
 
     // vehicles
-    const vehiclesCollection = db.collection<vehicles>(process.env.VEHICLE_COLLECTION_NAME)
-    collectionvehicles.vehicles = vehiclesCollection
+    const vehiclesCollection = db.collection<Vehicles>(COLLECTION_VEHICLES)
+    collectionVehicles.vehicles = vehiclesCollection
 
-    // Users
-    const usersCollection = db.collection<Users>(process.env.USER_COLLECTION_NAME)
+    //TODO: Users este no debe de ir aca pero mientras
+    const usersCollection = db.collection<Users>(COLLECTION_USERS)
     collectionUsers.users = usersCollection
 
+    // Users
+    const pricesCollection = db.collection<Prices>(COLLECTION_PRICES)
+    collectionPrices.prices = pricesCollection
+
     console.log(`Successfully connected to database: ${db.databaseName} and collection vehicles: ${vehiclesCollection.collectionName} and collection Users: ${usersCollection.collectionName}`,)
-}
-
-const applySchemaValidation = async (db: mongoDB.Db) => {
-    const jsonSchema = {
-        $jsonSchema: {
-            bsonType: "object",
-            required: ["layout", "key", "title"],
-            additionalProperties: false,
-            properties: {
-                _id: {},
-                layout: {
-                    bsonType: "string",
-                    description: "must be a string and is required"
-                },
-                key: {
-                    bsonType: "string",
-                    description: "must be a string and is required"
-                },
-                title: {
-                    bsonType: "string",
-                    description: "must be a string and is required"
-                }
-            }
-        }
-    }
-
-    await db.command({
-        collMod: process.env.VEHICLE_COLLECTION_NAME="vehicle"
-        ,
-        validator: jsonSchema
-    }).catch(async (error: mongoDB.MongoServerError) => {
-        if (error.codeName === 'NamespaceNotFound') {
-            await db.createCollection(process.env.VEHICLE_COLLECTION_NAME, { validator: jsonSchema });
-        }
-    })
 }

@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { ObjectId } from "mongodb";
 
-import { collectionvehicles } from "../services/database.service";
+import { collectionVehicles } from "../services/database.service";
 
 // Validation de JOI
 import validator from '../utilities/validator'
@@ -16,7 +16,7 @@ vehicleRouter.use(express.json());
 vehicleRouter.get("/", decodeToken, async (req: Request, res: Response) => {
 // vehicleRouter.get("/", async (req: Request, res: Response) => {
     try {
-        const vehicles = await collectionvehicles.vehicles.find({}).toArray();
+        const vehicles = await collectionVehicles.vehicles.find({}).toArray();
         res.json(vehicles).status(200);
     } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ vehicleRouter.get("/", decodeToken, async (req: Request, res: Response) => {
 vehicleRouter.get("/:id", decodeToken, async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
-        const vehicle = await collectionvehicles.vehicles.findOne({ _id: new ObjectId(id) });
+        const vehicle = await collectionVehicles.vehicles.findOne({ _id: new ObjectId(id) });
         if (vehicle) {
             res.json(vehicle).status(200);
         } else {
@@ -42,7 +42,7 @@ vehicleRouter.get("/:id", decodeToken, async (req: Request, res: Response) => {
 vehicleRouter.post("/", validator.body(vehicleSchema), async (req: Request, res: Response) => {
     try {
         const newvehicle = req.body;
-        const result = await collectionvehicles.vehicles.insertOne(newvehicle);
+        const result = await collectionVehicles.vehicles.insertOne(newvehicle);
 
         result
             ? res.json({ "_id": result.insertedId }).status(201)
@@ -59,7 +59,7 @@ vehicleRouter.put("/:id", decodeToken, async (req: Request, res: Response) => {
         const vehicle = req.body;
 
         const query = { _id: new ObjectId(id) };
-        const result = await collectionvehicles.vehicles.updateOne(query, { $set: vehicle });
+        const result = await collectionVehicles.vehicles.updateOne(query, { $set: vehicle });
 
         result
             ? res.json(vehicle).status(200)
@@ -74,7 +74,7 @@ vehicleRouter.delete("/:id", decodeToken, async (req: Request, res: Response) =>
     try {
         const id = req.params.id;
         const query = { _id: new ObjectId(id) };
-        const result = await collectionvehicles.vehicles.deleteOne(query);
+        const result = await collectionVehicles.vehicles.deleteOne(query);
         if (result && result.deletedCount) {
             res.status(202).send("Languaje deleted");
         } else if (!result) {

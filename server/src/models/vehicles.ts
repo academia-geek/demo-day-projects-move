@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 
-export interface vehicles {
+export interface Vehicles {
     id?: ObjectId;
     type: String;
     subtitle: String;

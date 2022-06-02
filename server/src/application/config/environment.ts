@@ -60,3 +60,28 @@ export const CONFIG_POSTGRES = {
     password: process.env.DB_PASSWORD_POSTGRES,
     port: 5432,
 }
+
+
+/**
+ * Configuracion para FirebaseApp
+ * 
+ */
+
+ export const CONFIG_FIREBASE = {
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTHDOMAIN,
+    projectId: process.env.PROJECTID,
+    storageBucket: process.env.STORAGEBUCKET,
+    messagingSenderId: process.env.MESSAGINGSENDERID,
+    appId: process.env.APPID
+};
+
+
+
+/**
+ * Colecciones de la base de datos mongo
+ */
+
+export const COLLECTION_VEHICLES = process.env.VEHICLE_COLLECTION_NAME  || "vehicle"
+export const COLLECTION_USERS = process.env.USER_COLLECTION_NAME || "users"
+export const COLLECTION_PRICES = process.env.PRICE_COLLECTION_NAME || "prices"
