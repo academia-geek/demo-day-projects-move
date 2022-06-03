@@ -1,8 +1,8 @@
+DROP TABLE IF EXISTS service;
+
 DROP TABLE IF EXISTS lender;
 
 DROP TABLE IF EXISTS taker;
-
-DROP TABLE IF EXISTS service;
 
 DROP TABLE IF EXISTS users;
 
@@ -20,7 +20,7 @@ DROP SEQUENCE IF EXISTS seq_id_taker;
 
 DROP SEQUENCE IF EXISTS seq_id_service;
 
-CREATE TYPE "role" AS ENUM('admin','prestador', 'tomador');
+CREATE TYPE "role" AS ENUM('admin','prestador', 'tomador', 'usuario');
 
 CREATE TYPE conductor_incl AS ENUM('si','no');
 

@@ -1,0 +1,30 @@
+[
+    {
+        "cc_owner": "1005206688",
+        "placa": "ABC123",
+        "url_image": [
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/1969_Ford_Mustang_Mach_1_%2837901276352%29.jpg"
+            },
+            {
+                "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/1969_Ford_Mustang_Mach_1_%2837901276352%29.jpg"
+            }
+        ],
+        "modelo": 2018,
+        "color": "rojo",
+        "fecha_disponibilidad": {
+            "fecha_inicio": "2018-01-01",
+            "fecha_fin": "2018-12-31"
+        },
+        "url_soat": "https://www.soat.com/",
+        "url_tecnomecanica": "https://www.tecnomecanica.com/",
+        "url_ficha_tecnica": "https://www.fichatecnica.com/",
+        "activo": true,
+        "gama": "alta",
+        "comision_renta": 0.1,
+        "polisa": 20000,
+        "tipo_vehiculo": "combustion",
+        "tipo_combustible": "gasolina",
+        "valor_combustible": 20000
+    }
+]
