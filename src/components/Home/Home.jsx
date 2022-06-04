@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Col, Container, Dropdown, DropdownButton, Row } from "react-bootstrap";
+import Footer from "../Footer";
 import NavBar from "../Navbar";
 
 const Home = () => {
@@ -65,6 +66,7 @@ const Home = () => {
         </Col>
         </Row>
       </Container>
+      <Footer/>
     </>
   )
 };
