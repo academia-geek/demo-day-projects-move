@@ -31,14 +31,3 @@ authRouter.post('/login', validator.body(authSchema), async (req: Request, res: 
         res.status(500).send(error.message);
     }
 })
-
-authRouter.get('/users', async (req: Request, res: Response) => {
-    let cliente = await pool.connect();
-    try {
-        const result = await cliente.query('SELECT * FROM users');
-        res.status(200).send(result.rows);
-    } catch (error) {
-        console.log(error);
-        res.status(500).send(error.message);
-    }
-})
