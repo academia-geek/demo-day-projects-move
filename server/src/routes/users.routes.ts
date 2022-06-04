@@ -1,6 +1,6 @@
 // Authentication
 import express, { Request, Response } from "express";
-
+import { pool } from "../database/database.config";
 import auth from "../firebase/auth"
 
 import authSchema from "../schemas-joi/users.schemajoi"
@@ -28,6 +28,17 @@ authRouter.post('/login', validator.body(authSchema), async (req: Request, res: 
         const result = await auth.login(email, password);
         res.status(201).send(result);
     } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
+
+authRouter.get('/users', async (req: Request, res: Response) => {
+    let cliente = await pool.connect();
+    try {
+        const result = await cliente.query('SELECT * FROM users');
+        res.status(200).send(result.rows);
+    } catch (error) {
+        console.log(error);
         res.status(500).send(error.message);
     }
 })
