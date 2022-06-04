@@ -33,7 +33,7 @@ const Sidebar = () => {
                                     <i className="fs-4 bi-table"></i> <span className="ms-1 d-none d-sm-inline">Perfil</span></Link>
                             </li>
                             <li>
-                                <Link to="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <Link to="#submenu3" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
                                     <i className="fs-4 bi-grid"></i> <span className="ms-1 d-none d-sm-inline">Vehiculos</span> </Link>
                                 <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                     <li className="w-100">
@@ -51,7 +51,7 @@ const Sidebar = () => {
                                 </ul>
                             </li>
                             <li onClick={() => dispatch(startLogout())}>
-                                <Link to="#" class="nav-link px-0 align-middle">
+                                <Link to="#" className="nav-link px-0 align-middle">
                                     <i className="fs-4 bi-people"></i> <span className="ms-1 d-none d-sm-inline">Cerrar Sesión</span> </Link>
                             </li>
                         </ul>

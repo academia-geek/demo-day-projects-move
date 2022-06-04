@@ -16,15 +16,15 @@ const NavBar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
-          <Nav.Link href="#action2">¿Quienes Somos?</Nav.Link>
-          <Nav.Link href="#action2">Preguntas Frecuentes</Nav.Link>
-          <Nav.Link href="#action2">Vehículos Electricos</Nav.Link>
+          <Nav.Link className="text-dark" href="#quienes-somos">¿Quienes Somos?</Nav.Link>
+          <Nav.Link className="text-dark" href="#preguntas-frecuentes">Preguntas Frecuentes</Nav.Link>
+          <Nav.Link className="text-dark" href="#vehiculos">Vehículos</Nav.Link>
           <Nav className="d-grid gap-2 d-flex ">
-            <Button variant="success">
-              <Link to="/login">Iniciar Sesión</Link>
+            <Button href="/login"  variant="success">
+              Iniciar Sesión
             </Button>
-            <Button variant="outline-success">
-              <Link to="/signup">Registrarse</Link>
+            <Button href="/signup" variant="outline-success">
+             Registrarse
             </Button>
           </Nav>
         </Navbar.Collapse>

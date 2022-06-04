@@ -62,12 +62,12 @@ const Home = () => {
         </Carousel>
       </Container>
 
-      <Container className="p-5 text-center" >
+      <Container className="p-5 text-center" id="quienes-somos" >
         <h2>¿Quiénes Somos?</h2>
-        <p>Somos una empresa dedicada a la renta de vehículos con o sin conductor, con variedad de vehiculos, para todas las necesidades, nos destacamos por nuestro buen servicio, rápido y confiable.</p>
+        <p className="p-5">Somos una empresa dedicada a la renta de vehículos con o sin conductor, con variedad de vehiculos, para todas las necesidades, nos destacamos por nuestro buen servicio, rápido y confiable.</p>
       </Container>
 
-      <Container className="p-5 text-center" >
+      <Container className="p-5 text-center" id="preguntas-frecuentes">
         <h2>Preguntas Frecuentes</h2>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Cómo es el Proceso para rentar un vehículo?">
         <Dropdown.ItemText> Entra a nuestra pagina e ingresa a la sección de reservas. </Dropdown.ItemText>
@@ -86,7 +86,7 @@ const Home = () => {
         </DropdownButton>               
       </Container>
 
-      <Container fluid className="p-5 text-center">
+      <Container fluid className="p-5 text-center" id="vehiculos">
         
         <h2 className="p-3">Vehículos</h2>
         <Row className="d-flex p-3">
