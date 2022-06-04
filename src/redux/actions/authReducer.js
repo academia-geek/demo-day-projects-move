@@ -23,8 +23,7 @@ export const startLoginEmailPassword = (email, password) => {
         Swal.fire("Bien Hecho!", "Inicio de sesión exitoso", "success");
       })
       .catch((error) => {
-        console.log(error);
-        Swal.fire("Oops...", "Ha ocurrido un error", "error");
+        console.log(error);        
       });
   };
 };
