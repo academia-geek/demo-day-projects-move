@@ -32,13 +32,13 @@ const swaggerSpec = {
         },
         servers: [
             {
-                url: "http://34.66.155.91:5000/",
-                description: "Servidor"
-            },
-            {
                 url: "http://localhost:5000/",
                 description: "Local"
-            }
+            },
+            {
+                url: "FOR CONFIGURATION",
+                description: "Servidor"
+            }            
         ],
     },
     apis: ['./dist/docs/*.js']
@@ -56,11 +56,11 @@ app.get('/', (req, res) => {
         },
         {
             info: "Servidor local con token",
-            url: "http://localhost:5000/vehicle"
+            url: "http://localhost:5000/vehicles"
         },
         {
-            info: "Servidor Cloud con token",
-            url: "http://34.66.155.91:5000/vehicle"
+            info: "Documentacion de la API",
+            url: "http://localhost:5000/api-docs"
         }
     ])
 })

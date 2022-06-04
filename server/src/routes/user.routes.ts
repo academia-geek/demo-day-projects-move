@@ -4,6 +4,7 @@ import { pool } from "../database/database.config";
 export const userRouter = express.Router();
 userRouter.use(express.json());
 
+// Lista de usuario pero se debe tener permisos de admin
 userRouter.get('/', async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {

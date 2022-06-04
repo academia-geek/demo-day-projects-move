@@ -49,12 +49,13 @@ export const CONFIG_MYSQL = {
 export const MONGODB_URI = PROD
     ? process.env.MONGO_PRODUCTION
     : process.env.MONGO_DEVELOPMENT
-    
+
+export const DB_NAME = process.env.DB_NAME
 /**
  * Postgres
  */
 export const CONFIG_POSTGRES = {
-    host    : process.env.HOST,
+    host    : process.env.HOST_POSTGRES,
     user    : process.env.DB_USER_POSTGRES,
     database: process.env.DATABASE_POSTGRES,
     password: process.env.DB_PASSWORD_POSTGRES,
