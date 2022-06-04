@@ -1,6 +1,6 @@
 // Authentication
 import express, { Request, Response } from "express";
-
+import { pool } from "../database/database.config";
 import auth from "../firebase/auth"
 
 import authSchema from "../schemas-joi/users.schemajoi"
