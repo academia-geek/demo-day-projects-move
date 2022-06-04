@@ -1,8 +1,5 @@
 import * as mongoDB from "mongodb";
-import {COLLECTION_VEHICLES, COLLECTION_USERS, COLLECTION_PRICES} from "../application/config/environment";
-/* import { vehicles } from "../models/vehicles";
-import { Users } from "../models/users";
-import { Users } from "../models/users"; */
+import {DB_NAME, COLLECTION_VEHICLES, COLLECTION_USERS, COLLECTION_PRICES, MONGODB_URI} from "../application/config/environment";
 import {Prices, Users, Vehicles} from "../models/index";
 
 export const collectionVehicles: { vehicles?: mongoDB.Collection<Vehicles> } = {}
@@ -10,11 +7,11 @@ export const collectionUsers: { users?: mongoDB.Collection<Users> } = {}
 export const collectionPrices: { prices?: mongoDB.Collection<Prices> } = {}
 
 export const connectDatabase = async () => {
-    const client = new mongoDB.MongoClient(process.env.MONGO_DEVELOPMENT)
+    const client = new mongoDB.MongoClient(MONGODB_URI)
 
     await client.connect()
 
-    const db = client.db(process.env.DB_NAME)
+    const db = client.db(DB_NAME)
 
     // await applySchemaValidation(db);
 
