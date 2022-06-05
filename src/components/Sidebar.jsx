@@ -6,7 +6,7 @@ import { startLogout } from '../redux/actions/authReducer';
 const Sidebar = () => {
     const dispatch = useDispatch();
     return (        
-        <div className="container-fluid">
+        <div className="container-fluid ">
             <div className="row">
                 <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
                     <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
