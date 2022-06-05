@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "../components/Footer";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
+import Profile from "../components/Profile";
 import Sidebar from "../components/Sidebar";
 import SignUp from "../components/SignUp/SignUp";
 import Vehicles from "../components/Vehicles/Vehicles";
@@ -56,6 +57,7 @@ const AppRouter = () => {
           element={
             <PublicRoutes isAuth={isLoggedIn}>
               <Login />
+              <Footer/>
             </PublicRoutes>
           }
         />
@@ -64,6 +66,7 @@ const AppRouter = () => {
           element={
             <PublicRoutes isAuth={isLoggedIn}>
               <SignUp />
+              <Footer/>
             </PublicRoutes>
           }
         />
@@ -74,6 +77,17 @@ const AppRouter = () => {
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar/>
               <Vehicles />
+              <Footer/>
+            </PrivateRoutes>
+          }
+        />
+      
+      <Route
+          path="/profile"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar/>
+              <Profile />
               <Footer/>
             </PrivateRoutes>
           }

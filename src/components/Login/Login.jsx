@@ -35,7 +35,7 @@ const Login = () => {
           <div className="m-auto" >
             <div
               className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-              <div className="card p-4 bg-dark">
+              <div className="card p-4">
                 <div className='d-flex justify-content-center'><img
                   alt=""
                   src="https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png"
@@ -85,7 +85,7 @@ const Login = () => {
             </div>
           </div>
         )}
-      </Formik>
+      </Formik>      
     </>
   );
 };

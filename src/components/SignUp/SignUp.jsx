@@ -49,7 +49,7 @@ const SignUp = () => {
         <div className="m-auto" >
         <div
           className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-          <div className="card p-4 bg-dark">
+          <div className="card p-4">
             <div className='d-flex justify-content-center'><img
               alt=""
               src="https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png"
@@ -58,18 +58,23 @@ const SignUp = () => {
             </div>
             <div className="card-body w-100"></div>
         <Form>
-          
-          <Field className="rounded-end form-control my-3" type="text" name="name" placeholder="Nombre" />
-          <ErrorMessage name="name" component="span" className="error" />
+        <Field className="rounded-end form-control my-3" type="text" name="cc_user" placeholder="Documento de identificación" />
+          <ErrorMessage name="cc_user" component="span" className="error" />
 
-          <Field className="rounded-end form-control my-3" type="text" name="fullname" placeholder="Apellido" />
-          <ErrorMessage name="fullname" component="span" className="error" />
+          <Field className="rounded-end form-control my-3" type="text" name="first_name" placeholder="Nombre" />
+          <ErrorMessage name="first_name" component="span" className="error" />
+
+          <Field className="rounded-end form-control my-3" type="text" name="last_name" placeholder="Apellido" />
+          <ErrorMessage name="last_name" component="span" className="error" />
 
           <Field className="rounded-end form-control my-3" type="email" name="email" placeholder="Email" />
           <ErrorMessage name="email" component="span" className="error" />
 
-          <Field className="rounded-end form-control my-3" type="text" name="fullname" placeholder="Ciudad" />
-          <ErrorMessage name="fullname" component="span" className="error" />
+          <Field className="rounded-end form-control my-3" type="text" name="city" placeholder="Ciudad" />
+          <ErrorMessage name="city" component="span" className="error" />
+
+          <Field className="rounded-end form-control my-3" type="text" name="age" placeholder="Edad" />
+          <ErrorMessage name="age" component="span" className="error" />
 
           <Field className="rounded-end form-control my-3" type="password" name="password" placeholder="Contraseña" />
           <ErrorMessage name="password" component="span" className="error" />
