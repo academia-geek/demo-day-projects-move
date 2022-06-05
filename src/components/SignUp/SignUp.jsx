@@ -28,6 +28,7 @@ const SignUp = () => {
   const [reset] = useForm();
 
   return (
+    
     <Formik
       initialValues={{
         name: "",
@@ -45,34 +46,62 @@ const SignUp = () => {
       }}
     >
       {({ isValid }) => (
+        <div className="m-auto p-5" >
+        <div
+          className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+          <div className="card p-5">
+            <div className='d-flex justify-content-center px-5'><img
+              alt=""
+              src="https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png"
+              width="180"
+            />
+            </div>
+            <div className="card-body w-100"></div>
         <Form>
-          <h1>ESTE ES EL REGISTER</h1>
-          <Field type="text" name="name" placeholder="Name" />
-          <ErrorMessage name="name" component="span" className="error" />
+        <Field className="rounded-end form-control my-3" type="text" name="cc_user" placeholder="Documento de identificación" />
+          <ErrorMessage name="cc_user" component="span" className="error" />
 
-          <Field type="email" name="email" placeholder="Email" />
+          <Field className="rounded-end form-control my-3" type="text" name="first_name" placeholder="Nombres" />
+          <ErrorMessage name="first_name" component="span" className="error" />
+
+          <Field className="rounded-end form-control my-3" type="text" name="last_name" placeholder="Apellidos" />
+          <ErrorMessage name="last_name" component="span" className="error" />
+
+          <Field className="rounded-end form-control my-3" type="email" name="email" placeholder="Email" />
           <ErrorMessage name="email" component="span" className="error" />
 
-          <Field type="password" name="password" placeholder="Password" />
+          <Field className="rounded-end form-control my-3" type="text" name="city" placeholder="Ciudad" />
+          <ErrorMessage name="city" component="span" className="error" />
+
+          <Field className="rounded-end form-control my-3" type="text" name="age" placeholder="Edad" />
+          <ErrorMessage name="age" component="span" className="error" />
+
+          <Field className="rounded-end form-control my-3" type="password" name="password" placeholder="Contraseña" />
           <ErrorMessage name="password" component="span" className="error" />
 
-          <Field
+          <Field className="rounded-end form-control my-3"
             type="password"
             name="confirmPassword"
-            placeholder="Password again"
+            placeholder="Repetir contraseña"
           />
           <ErrorMessage
             name="confirmPassword"
             component="span"
             className="error"
           />
-          <button type="submit" disabled={!isValid}>
+          <div className="mt-5 text-center">
+          <button className="btn bg-success text-white me-2" type="submit" disabled={!isValid}>
             Registrarse
           </button>
-          <Link to="/login" className="link">
-            Ya tiene una cuenta?
+          <hr/>
+          <Link to="/login" className="link text-success">
+            ¿Ya tienes una cuenta?
           </Link>
+          </div>
         </Form>
+        </div>
+            </div>
+          </div>
       )}
     </Formik>
   );
