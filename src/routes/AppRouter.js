@@ -8,6 +8,7 @@ import Login from "../components/Login/Login";
 import Profile from "../components/Profile";
 import Sidebar from "../components/Sidebar";
 import SignUp from "../components/SignUp/SignUp";
+import Users from "../components/Users";
 import Vehicles from "../components/Vehicles/Vehicles";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
@@ -88,6 +89,17 @@ const AppRouter = () => {
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar/>
               <Profile />
+              <Footer/>
+            </PrivateRoutes>
+          }
+        />
+
+<Route
+          path="/users"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar/>
+              <Users />
               <Footer/>
             </PrivateRoutes>
           }

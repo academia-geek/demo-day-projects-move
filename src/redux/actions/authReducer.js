@@ -114,7 +114,7 @@ export const startLogout = () => {
       })
       .catch((error) => {
         console.log(error);
-        Swal.fire("Oops...", "Ha ocurrido un error", "error");
+        // Swal.fire("Oops...", "Ha ocurrido un error", "error");
       });
     signOut(auth)
       .then(() => {

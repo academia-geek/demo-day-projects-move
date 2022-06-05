@@ -46,11 +46,11 @@ const SignUp = () => {
       }}
     >
       {({ isValid }) => (
-        <div className="m-auto" >
+        <div className="m-auto p-5" >
         <div
           className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-          <div className="card p-4">
-            <div className='d-flex justify-content-center'><img
+          <div className="card p-5">
+            <div className='d-flex justify-content-center px-5'><img
               alt=""
               src="https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png"
               width="180"
@@ -61,10 +61,10 @@ const SignUp = () => {
         <Field className="rounded-end form-control my-3" type="text" name="cc_user" placeholder="Documento de identificación" />
           <ErrorMessage name="cc_user" component="span" className="error" />
 
-          <Field className="rounded-end form-control my-3" type="text" name="first_name" placeholder="Nombre" />
+          <Field className="rounded-end form-control my-3" type="text" name="first_name" placeholder="Nombres" />
           <ErrorMessage name="first_name" component="span" className="error" />
 
-          <Field className="rounded-end form-control my-3" type="text" name="last_name" placeholder="Apellido" />
+          <Field className="rounded-end form-control my-3" type="text" name="last_name" placeholder="Apellidos" />
           <ErrorMessage name="last_name" component="span" className="error" />
 
           <Field className="rounded-end form-control my-3" type="email" name="email" placeholder="Email" />
@@ -89,7 +89,7 @@ const SignUp = () => {
             component="span"
             className="error"
           />
-          <div className="mt-5 card-footer text-center">
+          <div className="mt-5 text-center">
           <button className="btn bg-success text-white me-2" type="submit" disabled={!isValid}>
             Registrarse
           </button>

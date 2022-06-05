@@ -67,6 +67,15 @@ const Home = () => {
         <p className="p-5">Somos una empresa dedicada a la renta de vehículos con o sin conductor, con variedad de vehiculos, para todas las necesidades, nos destacamos por nuestro buen servicio, rápido y confiable.</p>
       </Container>
 
+      <Container className="p-5 text-center border d-flex flex-column">
+        <h2>Buscador</h2>
+        <label className="p-2">Sede</label><input className="m-2" />
+        <label className="p-2">Entrega</label><input className="m-2" />
+        <label className="p-2">Devolución</label><input className="m-2" />
+        <label className="p-2">Fecha de Entrega</label><input className="m-2" />
+        <label className="p-2">Fecha de Devolución</label><input className="m-2" />
+      </Container>
+
       <Container className="p-5 text-center" id="preguntas-frecuentes">
         <h2>Preguntas Frecuentes</h2>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Cómo es el Proceso para rentar un vehículo?">

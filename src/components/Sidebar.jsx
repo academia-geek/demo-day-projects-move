@@ -29,25 +29,25 @@ const Sidebar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="#submenu1" data-bs-toggle="collapse" className="nav-link px-0 align-middle text-success">
+                            <Link to="/users" className="nav-link px-0 align-middle text-success">
                                     <i className="fas fa-users text-success"></i> <span className="ms-1 d-none d-sm-inline">Usuarios</span> </Link>
                             </li>
                             
                             <li>
-                                <Link to="#submenu3" data-bs-toggle="collapse" className="nav-link px-0 align-middle text-success">
+                                <Link to="/vehicles" data-bs-toggle="collapse" className="nav-link px-0 align-middle text-success">
                                     <i className="fas fa-car text-success"></i> <span className="ms-1 d-none d-sm-inline">Vehiculos</span> </Link>
                                 <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                     <li className="w-100">
-                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Patinetas</span> 1</Link>
+                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Alta</span> </Link>
                                     </li>
                                     <li>
-                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Bicicletas</span> 2</Link>
+                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Media</span> </Link>
                                     </li>
                                     <li>
-                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Motos</span> 3</Link>
+                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Baja</span> </Link>
                                     </li>
                                     <li>
-                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Carros</span> 4</Link>
+                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Eléctricos</span> </Link>
                                     </li>
                                 </ul>
                             </li>
