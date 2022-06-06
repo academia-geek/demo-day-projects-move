@@ -3,9 +3,7 @@ import { Button, Card } from 'react-bootstrap'
 
 const CardCar = () => {
   return (
-    <div className="bg-transparent">
-        <div className="row m-3" >
-      <Card style={{ width: '18rem' }}>
+      <Card className="col-sm-auto m-3" style={{ width: '18rem' }}>
         <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_960_720.jpg" />
         <Card.Body className="d-flex justify-content-around">
           <div>
@@ -16,9 +14,7 @@ const CardCar = () => {
           <Button className="mt-2" variant="success">Ver Detalle</Button>
           </div>
         </Card.Body>
-      </Card>
-      </div>
-      </div>
+      </Card>     
   )
 }
 

@@ -6,9 +6,9 @@ import Footer from "../components/Footer";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import Profile from "../components/Profile";
+import RegisterPrest from "../components/RegisterPrest";
 import Sidebar from "../components/Sidebar";
 import SignUp from "../components/SignUp/SignUp";
-import Users from "../components/Users";
 import Vehicles from "../components/Vehicles/Vehicles";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
@@ -95,11 +95,11 @@ const AppRouter = () => {
         />
 
 <Route
-          path="/users"
+          path="/rpresta"
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar/>
-              <Users />
+              <RegisterPrest />
               <Footer/>
             </PrivateRoutes>
           }
