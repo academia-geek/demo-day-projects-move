@@ -1,3 +1,5 @@
+// Carga de documentos
+import express, { Request, Response } from "express";
 import {processFileMiddleware} from "../middleware/upload";
 import { format } from "util";
 import { Storage } from "@google-cloud/storage";
@@ -11,7 +13,7 @@ const storage = new Storage({
 });
 const bucket = storage.bucket(GOOGLE_CLOUD_BUCKET);
 
-export const upload = async (req, res) => {
+export const upload = async (req: Request, res: Response) => {
   try {
     await processFileMiddleware(req, res);
 
@@ -28,7 +30,7 @@ export const upload = async (req, res) => {
       res.status(500).send({ message: err.message });
     });
 
-    blobStream.on("finish", async (data) => {
+    blobStream.on("finish", async (data: any) => {
       const publicUrl = format(
         `https://storage.googleapis.com/${bucket.name}/${blob.name}`
       );
@@ -65,10 +67,10 @@ export const upload = async (req, res) => {
   }
 };
 
-export const getListFiles = async (req, res) => {
+export const getListFiles = async (req: Request, res: Response) => {
   try {
     const [files] = await bucket.getFiles();
-    let fileInfos = [];
+    let fileInfos: { name: string; url: any; }[] = [];
 
     files.forEach((file) => {
       fileInfos.push({
@@ -87,7 +89,7 @@ export const getListFiles = async (req, res) => {
   }
 };
 
-export const download = async (req, res) => {
+export const download = async (req: Request, res: Response) => {
   try {
     const [metaData] = await bucket.file(req.params.name).getMetadata();
     res.redirect(metaData.mediaLink);
