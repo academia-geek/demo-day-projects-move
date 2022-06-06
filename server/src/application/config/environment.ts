@@ -37,10 +37,10 @@ export const SESSION_SECRET = process.env.JWT_SECRET || ""
 *  MySQL
 */
 export const CONFIG_MYSQL = {
-    host     : process.env.HOST,
-    user     : process.env.DB_USER,
-    password : process.env.DB_PASSWORD,
-    database : process.env.DATABASE
+    host: process.env.HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DATABASE
 }
 
 /**
@@ -55,8 +55,8 @@ export const DB_NAME = process.env.DB_NAME
  * Postgres
  */
 export const CONFIG_POSTGRES = {
-    host    : process.env.HOST_POSTGRES,
-    user    : process.env.DB_USER_POSTGRES,
+    host: process.env.HOST_POSTGRES,
+    user: process.env.DB_USER_POSTGRES,
     database: process.env.DATABASE_POSTGRES,
     password: process.env.DB_PASSWORD_POSTGRES,
     port: 5432,
@@ -68,7 +68,7 @@ export const CONFIG_POSTGRES = {
  * 
  */
 
- export const CONFIG_FIREBASE = {
+export const CONFIG_FIREBASE = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTHDOMAIN,
     projectId: process.env.PROJECTID,
@@ -83,6 +83,11 @@ export const CONFIG_POSTGRES = {
  * Colecciones de la base de datos mongo
  */
 
-export const COLLECTION_VEHICLES = process.env.VEHICLE_COLLECTION_NAME  || "vehicle"
+export const COLLECTION_VEHICLES = process.env.VEHICLE_COLLECTION_NAME || "vehicle"
 export const COLLECTION_USERS = process.env.USER_COLLECTION_NAME || "users"
 export const COLLECTION_PRICES = process.env.PRICE_COLLECTION_NAME || "prices"
+
+
+export const KEY_SENDGRID = process.env.API_KEY_SENDGRID
+export const SENDER_EMAIL = process.env.SENDER_EMAIL
+export const SEND_CODE = process.env.SEND_CODE

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import config  from "./firebase";
+import config from "./firebase";
 
 export const decodeToken = async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization?.split(" ")[1];
@@ -21,5 +21,16 @@ export const decodeToken = async (req: Request, res: Response, next: NextFunctio
         } else {
             return res.json({ message: "Internal Server Error" }).status(500);
         }
+    }
+}
+
+export const uidToken = async (req: Request) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    try {
+        const decodeValue = await config.admin.auth().verifyIdToken(token!)
+        return decodeValue.uid;
+    } catch (error) {
+        console.log(error);
+        return null;
     }
 }
