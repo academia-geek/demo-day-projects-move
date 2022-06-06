@@ -13,3 +13,4 @@ dist
 # Ignore file firebase keys secrets
 src/firebase/serviceAccountKey.json
 src/firebase/.firebase
+src/utilities/key.json

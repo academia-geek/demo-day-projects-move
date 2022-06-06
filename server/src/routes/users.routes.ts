@@ -14,6 +14,7 @@ import userSchema from "../schemas-joi/user.schemajoi";
 export const authRouter = express.Router();
 authRouter.use(express.json());
 
+// esta ruta solo sirve para probar
 authRouter.post('/signin', validator.body(authSchema), async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
@@ -25,6 +26,7 @@ authRouter.post('/signin', validator.body(authSchema), async (req: Request, res:
     }
 })
 
+// esta ruta solo sirve para probar
 authRouter.post('/login', validator.body(authSchema), async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
