@@ -12,8 +12,8 @@ const Home = () => {
       <Container fluit className="d-flex p-5">
         <Carousel>
           <Carousel.Item >
-            <div className="d-flex text-center">
-              <div className="p-5 ">
+            <div className="d-flex text-center mt-5 ">
+              <div className="p-5 mt-5">
                 <h1>Vehículos Gama Alta</h1>
                 <p className="m-1">Son vehículos excepcionales encarnados en una carrocería única y futurista. Estos automóviles han sido diseñados para satisfacer los gustos más selectos y brindar potencia y comodidad con estilo y distinción.</p>
                 <Button href="#footer" variant="success">Contáctanos</Button>
@@ -24,10 +24,10 @@ const Home = () => {
             </div>
           </Carousel.Item>
           <Carousel.Item>
-            <div className="d-flex text-center">
-              <div className="p-5">
+          <div className="d-flex text-center mt-5 ">
+              <div className="p-5 mt-5">
                 <h1>Vehículos Gama Media</h1>
-                <p>Para clientes exigentes tenemos disponibles vehículos de alta fiabilidad con diseños modernos de alta calidad, deportivos y elegantes.</p>
+                <p className="m-1">Para clientes exigentes tenemos disponibles vehículos de alta fiabilidad con diseños modernos de alta calidad, deportivos, elegantes, brindandoles el mayor confort.</p>
                 <Button href="#footer" variant="success">Contáctanos</Button>
               </div>
               <div className="m-auto">
@@ -36,10 +36,10 @@ const Home = () => {
             </div>
           </Carousel.Item>
           <Carousel.Item>
-            <div className="d-flex text-center">
-              <div className="p-5">
-                <h1>Vehículos Gama Baja</h1>
-                <p>Si lo que quieres es practicidad y economia, también contamos con vehículos eficientes perfectos para necesidades básicas a precios muy rentables.</p>
+          <div className="d-flex text-center mt-5 ">
+              <div className="p-5 mt-5">
+                <h1>Vehículos Económicos</h1>
+                <p className="m-1">Si lo que quieres es practicidad y economia, también contamos con vehículos eficientes perfectos para necesidades básicas a precios muy rentables.</p>
                 <Button href="#footer" variant="success">Contáctanos</Button>
               </div>
               <div className="m-auto">
@@ -48,8 +48,8 @@ const Home = () => {
             </div>
           </Carousel.Item>
           <Carousel.Item>
-            <div className="d-flex text-center">
-              <div className="p-5">
+          <div className="d-flex text-center mt-5 ">
+              <div className="p-5 mt-5">
                 <h1>Movilidad Sostenible</h1>
                 <p >Queremos innovar y ser mas responsables con nuestro medio ambiente, recien estamos incursionando con los autos eléctricos, por el momento contamos con un solo modelo, pero esta siendo muy cotizado.</p>
                 <Button href="#footer" variant="success">Contáctanos</Button>
@@ -62,67 +62,67 @@ const Home = () => {
         </Carousel>
       </Container>
 
-      <Container className="p-5 m-3 text-center" id="quienes-somos" >
+      <Container className="p-5 text-center" id="quienes-somos" >
         <h2>¿Quiénes Somos?</h2>
-        <p className="p-5">Somos una empresa dedicada a la renta de vehículos con o sin conductor, con variedad de vehiculos, para todas las necesidades, nos destacamos por nuestro buen servicio, rápido y confiable.</p>
+        <p className="p-5">Somos una empresa que se dedica a ofrecer soluciones que logren atender necesidades de movilidad en Colombia a través de una plataforma tecnológica para gestionar reservaciones en el Alquiler de Vehículos con o sin conductor, con una gran variedad, para todas las necesidades, nos destacamos por nuestro buen servicio, rápido y confiable, así como por la claridad en nuestras tarifas y políticas.</p>
       </Container>
 
       <Container className="m-auto p-5 text-center border d-flex flex-column ">
         <h2>Reserva </h2>
         <div className="input-group form-group mt-3">
-          <div className="bg-success text-white rounded-start w-25">
-            <span className="m-3 ">Sede de Entrega</span>
+          <div className="p-2 bg-success text-white rounded-start w-25">
+            <span>Sede de Entrega</span>
           </div>
           <NavDropdown
-            className="border w-75"
+            className="border w-75 m-auto"
             variant="outline-secondary"
             title="Seleccione"
             id="input-group-dropdown-1"
           >
-            <Dropdown.Item href="#">Medellín</Dropdown.Item>
-            <Dropdown.Item href="#">Cali</Dropdown.Item>
-            <Dropdown.Item href="#">Bogóta</Dropdown.Item>
+            <Dropdown.Item href="#">Medellín (Aeropuerto Internacional José María Córdova)</Dropdown.Item>
+            <Dropdown.Item href="#">Cali(Aeropuerto Internacional Alfonso Bonilla Aragon)</Dropdown.Item>
+            <Dropdown.Item href="#">Bogóta(Aeropuerto Internacional El Dorado Luis Carlos Galán Sarmiento)</Dropdown.Item>
           </NavDropdown>
         </div>
         <div className="input-group form-group mt-3">
-          <div className="bg-success text-white rounded-start w-25">
-            <span className="m-3 ">Sede de Devolución</span>
+          <div className="p-2 bg-success text-white rounded-start w-25">
+            <span>Sede de Devolución</span>
           </div>
           <NavDropdown
-            className="border w-75"
+            className="border w-75 m-auto"
             variant="outline-secondary"
             title="Seleccione"
             id="input-group-dropdown-1"
           >
-            <Dropdown.Item href="#">Medellín</Dropdown.Item>
-            <Dropdown.Item href="#">Cali</Dropdown.Item>
-            <Dropdown.Item href="#">Bogóta</Dropdown.Item>
+            <Dropdown.Item href="#">Medellín (Aeropuerto Internacional José María Córdova)</Dropdown.Item>
+            <Dropdown.Item href="#">Cali(Aeropuerto Internacional Alfonso Bonilla Aragon)</Dropdown.Item>
+            <Dropdown.Item href="#">Bogóta(Aeropuerto Internacional El Dorado Luis Carlos Galán Sarmiento)</Dropdown.Item>
           </NavDropdown>
         </div>
         <div className="input-group form-group mt-3">
-          <div className="bg-success text-white rounded-start w-25">
-            <span className="m-3 ">Fecha de Entrega</span>
+          <div className="p-2 bg-success text-white rounded-start w-25">
+            <span>Fecha de Entrega</span>
           </div>
           <input type="date" className="form-control" placeholder="Email"
             name="email" />
         </div>
         <div className="input-group form-group mt-3">
-          <div className="bg-success text-white rounded-start w-25">
-            <span className="m-3 ">Hora de Entrega</span>
+          <div className="p-2 bg-success text-white rounded-start w-25">
+            <span>Hora de Entrega</span>
           </div>
           <input type="time" className="form-control" placeholder="Email"
             name="email" />
         </div>
         <div className="input-group form-group mt-3">
-          <div className="bg-success text-white rounded-start w-25">
-            <span className="m-3 ">Fecha de Devolución</span>
+          <div className="p-2 bg-success text-white rounded-start w-25">
+            <span>Fecha de Devolución</span>
           </div>
           <input type="date" className="form-control" placeholder="Email"
             name="email" />
         </div>
         <div className="input-group form-group mt-3">
-          <div className="bg-success text-white rounded-start w-25">
-            <span className="m-3 ">Hora de Devolución</span>
+          <div className="p-2 bg-success text-white rounded-start w-25">
+            <span>Hora de Devolución</span>
           </div>
           <input type="time" className="form-control" placeholder="Email"
             name="email" />
@@ -137,16 +137,29 @@ const Home = () => {
       <Container className="p-5 text-center" id="preguntas-frecuentes">
         <h2>Preguntas Frecuentes</h2>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Cómo es el Proceso para rentar un vehículo?">
-          <Dropdown.ItemText> Entra a nuestra pagina e ingresa a la sección de reservas. </Dropdown.ItemText>
+          <Dropdown.ItemText> 
+            <div>Entra a nuestra página, logueate e ingresa a la sección de reservas.</div>
+            <div>Diligencia las sedes y fechas en las que quieres rentar tu Move.</div>
+            <div>Escoge entre categorias y vehículos disponibles.</div>
+            <div>Completa los datos personales para la reserva.</div>
+            <div>Acepta términos y condiciones.</div>
+            <div>Disfruta de tu vehículo</div>
+           </Dropdown.ItemText>
         </DropdownButton>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Cuales son los requisitos para rentar un vehículo?">
-          <Dropdown.ItemText> Ver Requisitos para Rentar un Auto</Dropdown.ItemText>
+          <Dropdown.ItemText> 
+            <div>Ser adulto mayor de 21 años.</div>
+            <div>Cedula de Ciudadanía o Pasaporte vigente.</div>
+            <div>Licencia de Conducción vigente (Nacional o Extranjera).</div>
+            <div>Tarjeta de Crédito como garantía/depósito del Contrato de Alquiler.</div>
+            
+            </Dropdown.ItemText>
         </DropdownButton>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Qué incluye la tarifa?">
           <Dropdown.ItemText> Básicamente tu tarifa incluye todo lo que necesitas para poder manejar el auto, por lo que no condicionaremos la entrega del auto a que adquieras ningún producto o protección adicional. Sin embargo contamos con una serie de servicios y protecciones adicionales las cuales son totalmente opcionales y que están pensadas para que tu viaje sea más cómodo. Para conocer más detalles y las condiciones aplicables vea nuestros Términos y Condiciones. </Dropdown.ItemText>
         </DropdownButton>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Cúal es la edad mínima para rentar un auto?">
-          <Dropdown.ItemText> En MovE la edad mínima para rentar un auto es 25 años. </Dropdown.ItemText>
+          <Dropdown.ItemText> En MovE la edad mínima para rentar un auto es 21 años. </Dropdown.ItemText>
         </DropdownButton>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Cómo cancelo una reservación?">
           <Dropdown.ItemText> Favor de cancelar su reservación a través del mismo medio en que fue creada, con una anticipación mínima de 48 horas. Tenga en cuenta que algunas de nuestras tarifas más bajas NO SON REEMBOLSABLES.  Si existe un pre-pago y su tarifa fuera reembolsable, el reembolso del monto pagado será íntegro sí cancela con al menos anticipación requerida. Si su tarifa fuera reembolsable, pero su cancelación fuera hecha con menos de 48 horas de anticipación se cobrará como penalización el equivalente a un día de renta, rembolsandole la cantidad restante. </Dropdown.ItemText>
@@ -168,7 +181,7 @@ const Home = () => {
         </Row>
         <Row className="d-flex p-3">
           <Col>
-            <h3>Gama Baja</h3>
+            <h3>Económicos</h3>
             <img className="w-50" src='https://res.cloudinary.com/dmaviub4l/image/upload/v1654357822/dnbxzrjul6z1k3fkgsba.jpg' alt='gama-baja' />
           </Col>
           <Col>

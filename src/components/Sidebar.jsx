@@ -23,14 +23,10 @@ const Sidebar = () => {
                                 <Link to="/profile" className="nav-link px-0 align-middle text-success">
                                 <i class="fas fa-user text-success"></i> <span className="ms-1 d-none d-sm-inline">Perfil</span></Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to="#" className="nav-link align-middle px-0 text-success">
-                                    <i className="fas fa-table text-success"></i> <span className="ms-1 d-none d-sm-inline">Métricas</span>
-                                </Link>
-                            </li>
+                            
                             <li>
                             <Link to="/users" className="nav-link px-0 align-middle text-success">
-                                    <i className="fas fa-users text-success"></i> <span className="ms-1 d-none d-sm-inline">Usuarios</span> </Link>
+                                    <i className="fas fa-address-card text-success"></i> <span className="ms-1 d-none d-sm-inline">Prestar Servicios</span> </Link>
                             </li>
                             
                             <li>
