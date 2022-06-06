@@ -115,4 +115,17 @@
  *              description: usuario ascendido
  *          401:
  *              description: Unauthorized
+ * 
+ * @swagger
+ * /auth/users/:
+ *  get:
+ *      summary: Obtener todos los usuarios
+ *      tags: [user]
+ *      security:
+ *          - BearerAuth: []
+ *      responses:
+ *          200:
+ *              description: usuarios obtenidos
+ *          401:
+ *              description: Unauthorized
  */
