@@ -86,3 +86,8 @@ export const CONFIG_POSTGRES = {
 export const COLLECTION_VEHICLES = process.env.VEHICLE_COLLECTION_NAME  || "vehicle"
 export const COLLECTION_USERS = process.env.USER_COLLECTION_NAME || "users"
 export const COLLECTION_PRICES = process.env.PRICE_COLLECTION_NAME || "prices"
+
+
+export const KEY_SENDGRID = process.env.API_KEY_SENDGRID
+export const SENDER_EMAIL = process.env.SENDER_EMAIL
+export const SEND_CODE = process.env.SEND_CODE
