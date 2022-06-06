@@ -1,17 +1,15 @@
 import React from 'react'
 
-const Profile = () => {
+const RegisterPrest = () => {
   return (
-    <div style={{ marginLeft: '100px' }}>
-      <h1 className="text-center p-3">Perfil de Usuario</h1>
+    <div style={{ marginLeft: '120px' }}>
+      <h1 className="text-center p-3">Registro Prestador</h1>
       <div
         className=" d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div className="card p-5 m-5">
           <div className='d-flex justify-content-center px-5'><img
             alt=""
-            src="https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png"
-            width="180"
-          />
+            src="https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png" width="180"/>
           </div>
           <div className="card-body w-100"></div>
           <form >
@@ -29,7 +27,7 @@ const Profile = () => {
             />
             <div className="mt-5 text-center">
               <button className="btn bg-success text-white me-2" type="submit" >
-                Guardar Cambios
+                Registro para Prestador
               </button>
             </div>
           </form>
@@ -39,4 +37,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default RegisterPrest

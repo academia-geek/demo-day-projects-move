@@ -5,9 +5,9 @@ import { startLogout } from '../redux/actions/authReducer';
 
 const Sidebar = () => {
     const dispatch = useDispatch();
-    return (        
-        <div className="container-fluid ">
-            <div className="row">
+    return (
+        <div className="container-fluid position-absolute">
+            <div className="row ">
                 <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
                     <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
                         <Link to="/" className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -19,24 +19,18 @@ const Sidebar = () => {
                             /></span>
                         </Link>
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
-                        <li>
+                            <li>
                                 <Link to="/profile" className="nav-link px-0 align-middle text-success">
-                                <i class="fas fa-user text-success"></i> <span className="ms-1 d-none d-sm-inline">Perfil</span></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="#" className="nav-link align-middle px-0 text-success">
-                                    <i className="fas fa-table text-success"></i> <span className="ms-1 d-none d-sm-inline">Métricas</span>
-                                </Link>
+                                    <i class="fas fa-user text-success"></i> <span className="ms-1 d-none d-sm-inline">Perfil</span></Link>
                             </li>
                             <li>
-                            <Link to="/users" className="nav-link px-0 align-middle text-success">
-                                    <i className="fas fa-users text-success"></i> <span className="ms-1 d-none d-sm-inline">Usuarios</span> </Link>
+                                <Link to="/rpresta" className="nav-link px-0 align-middle text-success">
+                                    <i className="fas fa-address-card text-success"></i> <span className="ms-1 d-none d-sm-inline">Prestar Servicios</span> </Link>
                             </li>
-                            
                             <li>
-                                <Link to="/vehicles" data-bs-toggle="collapse" className="nav-link px-0 align-middle text-success">
+                                <Link to="/vehicles" className="nav-link px-0 align-middle text-success">
                                     <i className="fas fa-car text-success"></i> <span className="ms-1 d-none d-sm-inline">Vehiculos</span> </Link>
-                                <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                {/* <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                     <li className="w-100">
                                         <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Alta</span> </Link>
                                     </li>
@@ -49,7 +43,7 @@ const Sidebar = () => {
                                     <li>
                                         <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Eléctricos</span> </Link>
                                     </li>
-                                </ul>
+                                </ul> */}
                             </li>
                             <li onClick={() => dispatch(startLogout())}>
                                 <Link to="#" className="nav-link px-0 align-middle text-success">
