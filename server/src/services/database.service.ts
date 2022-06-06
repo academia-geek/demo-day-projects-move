@@ -1,6 +1,6 @@
 import * as mongoDB from "mongodb";
-import {DB_NAME, COLLECTION_VEHICLES, COLLECTION_USERS, COLLECTION_PRICES, MONGODB_URI} from "../application/config/environment";
-import {Prices, Users, Vehicles} from "../models/index";
+import { DB_NAME, COLLECTION_VEHICLES, COLLECTION_USERS, COLLECTION_PRICES, MONGODB_URI } from "../application/config/environment";
+import { Prices, Users, Vehicles } from "../models/index";
 
 export const collectionVehicles: { vehicles?: mongoDB.Collection<Vehicles> } = {}
 export const collectionUsers: { users?: mongoDB.Collection<Users> } = {}
