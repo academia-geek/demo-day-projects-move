@@ -1,4 +1,5 @@
 import sgMail from '@sendgrid/mail'
+import {templateEmailValidation} from '../email/template/template'
 import { KEY_SENDGRID, SENDER_EMAIL} from '../application/config/environment'
 sgMail.setApiKey(KEY_SENDGRID)
 
@@ -10,7 +11,7 @@ export default async (userEmails: Array<string>, subject: string, name: string, 
     from: SENDER_EMAIL, // Change to your verified sender
     subject: subject,
     text: 'verified', // Change
-    html: `<strong>Hola ${name} su codigo es ${code}</strong>`,
+    html: templateEmailValidation(name, code),
   }
   
   sgMail

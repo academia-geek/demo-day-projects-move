@@ -55,13 +55,13 @@ authRouter.get('/users', tokenAdmin, async (req: Request, res: Response) => {
 authRouter.post('/users', decodeToken, validator.body(userSchema), async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
-        const {uid, email} = await uidToken(req);
+        const { uid, email } = await uidToken(req);
         console.log(uid, email);
         console.log(req.body);
-        
+
         const code = generatecode();
         console.log(code);
-        
+
         if (uid != null) {
             const { cc_user, first_name, last_name, city, age, address } = req.body;
             const params = {
@@ -71,19 +71,25 @@ authRouter.post('/users', decodeToken, validator.body(userSchema), async (req: R
                 code,
 
             }
-            const result = await cliente.query('INSERT INTO users (cc_user, first_name, last_name, email, city, age, address, uid, code) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [cc_user, first_name, last_name, email, city, age, address, uid, code]);
-            console.log(result);
-            
-            if (result.rowCount > 0) {
-                await sendEmail(
-                    params.user,
-                    params.subject,
-                    params.first_name,
-                    params.code
-                  )
-                return res.status(201).send({ message: "Usuario creado" });
+            const resultUser = await cliente.query('SELECT * FROM users WHERE email = $1', [email]);
+            if (resultUser.rowCount === 0) {
+
+                const result = await cliente.query('INSERT INTO users (cc_user, first_name, last_name, email, city, age, address, uid, code) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [cc_user, first_name, last_name, email, city, age, address, uid, code]);
+                console.log(result);
+
+                if (result.rowCount > 0) {
+                    await sendEmail(
+                        params.user,
+                        params.subject,
+                        params.first_name,
+                        params.code
+                    )
+                    return res.status(201).send({ message: "Usuario creado" });
+                } else {
+                    return res.status(500).send({ message: "Error al crear el usuario" });
+                }
             } else {
-                return res.status(500).send({ message: "Error al crear el usuario" });
+                return res.status(500).send({ message: "El usuario ya existe" });
             }
         } else {
             return res.status(500).json({ message: "Error al obtener el uid" });
@@ -144,12 +150,16 @@ authRouter.get('/activation-email/:code', async (req: Request, res: Response) =>
     let cliente = await pool.connect();
     try {
         console.log(req.params);
-        
+
         const { code } = req.params;
         const result = await cliente.query('SELECT * FROM users WHERE code = $1', [code]);
-        await result.rows.forEach(element => {
-            res.status(201).send(element);
-        });
+        if (result.rowCount > 0) {
+            const { cc_user } = result.rows[0];
+            const resultUpdate = await cliente.query('UPDATE users SET active_user = $1 WHERE cc_user = $2', [true, cc_user]);
+            if (resultUpdate.rowCount > 0) {
+                return res.status(200).send({ message: "Email activado" });
+            }
+        }
     } catch (error) {
         res.status(500).send(error.message);
     }
