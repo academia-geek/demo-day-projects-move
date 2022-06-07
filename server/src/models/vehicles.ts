@@ -2,15 +2,14 @@ import { Int32, ObjectId } from "mongodb";
 
 export interface Vehicles {
     id?: ObjectId;
-    cc_dueno: String;
-    matricula: String;
+    cc_owner: String;
+    placa: String;
     url_image: Array<string>; // Array
     modelo: Int32; // Int
     marca: String;
     color: string;
     linea: String;
-    placa: String;
-    fecha_disponibilidad: Date;
+    fecha_disponibilidad: Object;
     url_soat: String;
     url_tecnicomecanica: String;
     url_ficha_tecnica: String;
