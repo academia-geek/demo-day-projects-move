@@ -13,8 +13,6 @@ export const connectDatabase = async () => {
 
     const db = client.db(DB_NAME)
 
-    // await applySchemaValidation(db);
-
     // vehicles
     const vehiclesCollection = db.collection<Vehicles>(COLLECTION_VEHICLES)
     collectionVehicles.vehicles = vehiclesCollection
