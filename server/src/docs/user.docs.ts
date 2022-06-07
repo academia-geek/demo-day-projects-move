@@ -47,6 +47,7 @@
  *              email: "juan@gmail.com"
  *              city: "Bogota"
  *              address: "Calle 1"
+ *              age: "20"
  * 
  * @swagger
  * /auth/users/:
@@ -109,7 +110,7 @@
  *            name: role
  *            schema:
  *              type: string
- *              enum: [admin, user]
+ *              enum: [admin, usuario]
  *      responses:
  *          200:
  *              description: usuario ascendido
