@@ -10,6 +10,7 @@ import { collectionUsers } from "../services/database.service";
 
 import { decodeToken, uidToken } from "../firebase/admin.token";
 import userSchema from "../schemas-joi/user.schemajoi";
+import { userUniqueSchema } from "../schemas-joi/user.schemajoi";
 
 export const authRouter = express.Router();
 authRouter.use(express.json());
@@ -106,6 +107,39 @@ authRouter.put('/users/:id/:role', decodeToken, async (req: Request, res: Respon
         const result = await cliente.query('UPDATE users SET role = $1 WHERE cc_user = $2', [role, id]);
         if (result.rowCount > 0) {
             return res.status(200).send({ message: "Usuario actualizado" });
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ message: "Internal Server Error" });
+    } finally {
+        cliente.release(true);
+    }
+})
+
+// Como usuario registrado puede acceder a los datos personales de Mi cuenta para verlos.
+authRouter.get('/user/:id', decodeToken, async (req: Request, res: Response) => {
+    let cliente = await pool.connect();
+    try {
+        const { id } = req.params;
+        const result = await cliente.query('SELECT * FROM users WHERE cc_user = $1', [id]);
+        res.status(200).send(result.rows);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error.message);
+    }
+})
+
+// Como usuario registrado puede acceder a los datos personales de Mi cuenta para modificarlos. Excepto el correo electrónico.
+authRouter.patch('/user/:id', decodeToken, validator.body(userUniqueSchema), async (req: Request, res: Response) => {
+    let cliente = await pool.connect();
+    try {
+        const { id } = req.params;
+        const { cc_user, first_name, last_name, city, age, address } = req.body;
+        const result = await cliente.query('UPDATE users SET cc_user = $1, first_name = $2, last_name = $3, city = $4, age = $5 WHERE cc_user = $6', [cc_user, first_name, last_name, city, age, id]);
+        if (result.rowCount > 0) {
+            return res.status(200).send({ message: "Usuario actualizado" });
+        } else {
+            return res.status(500).send({ message: "Error al actualizar el usuario" });
         }
     } catch (error) {
         console.log(error);
