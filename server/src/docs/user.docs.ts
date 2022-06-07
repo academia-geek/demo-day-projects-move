@@ -47,6 +47,7 @@
  *              email: "juan@gmail.com"
  *              city: "Bogota"
  *              address: "Calle 1"
+ *              age: "20"
  * 
  * @swagger
  * /auth/users/:
@@ -109,10 +110,23 @@
  *            name: role
  *            schema:
  *              type: string
- *              enum: [admin, user]
+ *              enum: [admin, usuario]
  *      responses:
  *          200:
  *              description: usuario ascendido
+ *          401:
+ *              description: Unauthorized
+ * 
+ * @swagger
+ * /auth/users/:
+ *  get:
+ *      summary: Obtener todos los usuarios
+ *      tags: [user]
+ *      security:
+ *          - BearerAuth: []
+ *      responses:
+ *          200:
+ *              description: usuarios obtenidos
  *          401:
  *              description: Unauthorized
  */
