@@ -29,7 +29,7 @@ export const uidToken = async (req: Request) => {
     const token = req.headers.authorization?.split(" ")[1];
     try {
         const decodeValue = await config.admin.auth().verifyIdToken(token!)
-        return decodeValue.uid;
+        return decodeValue;
     } catch (error) {
         console.log(error);
         return null;
