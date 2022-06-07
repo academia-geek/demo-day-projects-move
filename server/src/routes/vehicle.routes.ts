@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { ObjectId } from "mongodb";
-
+import { pool } from "../database/database.config";
 import { collectionVehicles } from "../services/database.service";
 
 // Validation de JOI
@@ -13,8 +13,7 @@ import { decodeToken } from '../firebase/admin.token'
 export const vehicleRouter = express.Router();
 vehicleRouter.use(express.json());
 
-vehicleRouter.get("/", decodeToken, async (req: Request, res: Response) => {
-// vehicleRouter.get("/", async (req: Request, res: Response) => {
+vehicleRouter.get("/", async (req: Request, res: Response) => {
     try {
         const vehicles = await collectionVehicles.vehicles.find({}).toArray();
         res.json(vehicles).status(200);
@@ -24,7 +23,7 @@ vehicleRouter.get("/", decodeToken, async (req: Request, res: Response) => {
     }
 })
 
-vehicleRouter.get("/:id", decodeToken, async (req: Request, res: Response) => {
+vehicleRouter.get("/:id", async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
         const vehicle = await collectionVehicles.vehicles.findOne({ _id: new ObjectId(id) });
@@ -39,14 +38,25 @@ vehicleRouter.get("/:id", decodeToken, async (req: Request, res: Response) => {
     }
 })
 
-vehicleRouter.post("/", validator.body(vehicleSchema), async (req: Request, res: Response) => {
+vehicleRouter.post("/", decodeToken, validator.body(vehicleSchema), async (req: Request, res: Response) => {
+    let cliente = await pool.connect();
     try {
-        const newvehicle = req.body;
-        const result = await collectionVehicles.vehicles.insertOne(newvehicle);
+        const newVehicle = req.body;
+        const usersResult = await cliente.query('SELECT * FROM users WHERE cc_user = $1', [newVehicle.cc_owner]);
+        if (usersResult.rowCount === 0) {
+            res.status(400).json({ message: "El usuario no esta registrado" });
+        } else {
+            const vehicle = await collectionVehicles.vehicles.findOne({ placa: newVehicle.placa });
+            if (vehicle) {
+                res.status(400).json({ message: `El vehiculo con la placa ${vehicle.placa} ya se encuentra registrado` });
+            } else {
+                const result = await collectionVehicles.vehicles.insertOne(newVehicle);
 
-        result
-            ? res.json({ "_id": result.insertedId }).status(201)
-            : res.status(500).json({ message: "Error while inserting vehicle" });
+                result
+                    ? res.json({ "_id": result.insertedId }).status(201)
+                    : res.status(500).json({ message: "Error while inserting vehicle" });
+            }
+        }
     } catch (error) {
         console.log(error);
         res.status(500).send(error);

@@ -11,7 +11,7 @@ export const templateEmailValidation = (name: string, code: string) => {
         <h1>Hola ${name}</h1>
         <a
             style="text-decoration: none"
-            href="http://localhost:5000/confirmation/${code}"
+            href="http://localhost:5000/auth/activation-email/${code}"
         >
             <button
             style="
@@ -29,7 +29,7 @@ export const templateEmailValidation = (name: string, code: string) => {
             "
             type="button"
             >
-            Ver detalle del vuelo
+            Verificar email
             </button></a
         >
 
