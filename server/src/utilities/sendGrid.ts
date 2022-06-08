@@ -1,44 +1,26 @@
 import sgMail from '@sendgrid/mail'
-import { KEY_SENDGRID, SENDER_EMAIL } from '../application/config/environment'
+import {templateEmailValidation} from '../email/template/template'
+import { KEY_SENDGRID, SENDER_EMAIL} from '../application/config/environment'
 sgMail.setApiKey(KEY_SENDGRID)
 
-export default async (userEmails: Array<string>,params: object,templateId: string) => {
-  const msj = {
-    to: userEmails, //Lista de correos a los que le voy a enviar el email
-    from: SENDER_EMAIL, // Email verificado
-    templateId: templateId,//Template ID de la plantilla
-    dynamic_template_data: params
+export default async (userEmails: Array<string>, subject: string, name: string, code?: string) => {
+  console.log(userEmails);
+  
+  const msg = {
+    to: userEmails, // Change to your recipient
+    from: SENDER_EMAIL, // Change to your verified sender
+    subject: subject,
+    text: 'verified', // Change
+    html: templateEmailValidation(name, code),
   }
-
-  console.log(msj)
-
+  
   sgMail
-    .send(msj)
-    .then(() => {
-        console.log('Email send')
+    .send(msg)
+    .then((response) => {
+      console.log("Envie con exito", response[0].statusCode)
+      console.log(response[0].headers)
     })
-    .catch(error => {
-
-        console.error(error.response.body.errors)
+    .catch((error) => {
+      console.error(error)
     })
 }
-
-
-
-
-/**
- * Este codigo va cuando se le va a enviar el correo al usuario cuando se registre en la plataforma.
- * import generatecode from '../utilities/generatecode'
- * const code = generatecode();
-
-      await sendEmail(
-        email,
-        {
-          subject: 'Validate email',
-          name,
-          code
-        },
-        template || templateIds.SEND_CODE
-      )
- * 
- */
