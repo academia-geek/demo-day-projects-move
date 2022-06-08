@@ -2,6 +2,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import DetailCar from "../components/DetailCar";
 import Footer from "../components/Footer";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
@@ -100,6 +101,16 @@ const AppRouter = () => {
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar/>
               <RegisterPrest />
+              <Footer/>
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/detail/:id"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar/>
+              <DetailCar />
               <Footer/>
             </PrivateRoutes>
           }

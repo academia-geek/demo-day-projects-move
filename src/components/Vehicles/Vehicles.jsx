@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Button, Card } from 'react-bootstrap';
 import { url } from '../../helpers/url';
-import CardCar from "../CardCar";
+
 
 const Vehicles = () => {
   const [carArray, setCarArray] = useState([]);
@@ -32,7 +33,18 @@ const Vehicles = () => {
     <div className="row m-3" >
     {
             carArray?.map((car, index) => (
-    <CardCar/>
+              <Card className="col-sm-auto m-3" key={index} style={{ width: '18rem' }}>
+              <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_960_720.jpg" />
+              <Card.Body className="d-flex justify-content-around">
+                <div>
+                <Card.Title>Nombre</Card.Title>
+                <Card.Text>$389.56</Card.Text>
+                </div>
+                <div >
+                <Button className="mt-2" variant="success" href={`/detail/${car.name}`} onClick={() => showDetail(car)}>Ver Detalle</Button>
+                </div>
+              </Card.Body>
+            </Card>  
     ))
   }
 </div>
