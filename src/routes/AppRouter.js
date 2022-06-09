@@ -16,17 +16,20 @@ import { PublicRoutes } from "./PublicRoutes";
 
 const AppRouter = () => {
   const [checking, setChecking] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false || localStorage.getItem("auth") === true);
-  const [token, setToken] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    false || localStorage.getItem("auth") === true
+  );
 
+  const [token, setToken] = useState("");
   useEffect(() => {
     const auth = getAuth();
-    
+
     //obtenga el usuario
     onIdTokenChanged(auth, (user) => {
       if (user?.uid) {
         setIsLoggedIn(true);
         localStorage.setItem("auth", "true");
+
         //traer el token
         user.getIdToken().then((token) => {
           setToken(token);
@@ -38,8 +41,6 @@ const AppRouter = () => {
       setChecking(false);
     });
   }, [setIsLoggedIn, setChecking, isLoggedIn]);
-
-  
 
   if (checking) {
     return (

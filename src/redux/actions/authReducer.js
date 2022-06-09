@@ -45,10 +45,10 @@ export const startGoogleLogin = () => {
     signInWithPopup(auth, google)
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
-        function reauthWithGoogle() {
-          return reauthenticateWithPopup(auth, google);
-        }
-        updatePassword(user, "new password").catch((e) => reauthWithGoogle());
+        // function reauthWithGoogle() {
+        //   return reauthenticateWithPopup(auth, google);
+        // }
+        // updatePassword(user, "new password").catch((e) => reauthWithGoogle());
         Swal.fire(
           "Bien Hecho!",
           "Inicio de sesión con google exitoso",
@@ -69,10 +69,10 @@ export const startFacebookLogin = () => {
     signInWithPopup(auth, facebook)
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
-        function reauthWithFacebook() {
-          return reauthenticateWithPopup(auth, facebook);
-        }
-        updatePassword(user, "new password").catch((e) => reauthWithFacebook());
+        // function reauthWithFacebook() {
+        //   return reauthenticateWithPopup(auth, facebook);
+        // }
+        // updatePassword(user, "new password").catch((e) => reauthWithFacebook());
         Swal.fire(
           "Bien Hecho!",
           "Inicio de sesión con facebook exitoso",
