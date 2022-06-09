@@ -11,6 +11,10 @@ import { collectionUsers } from "../services/database.service";
 import { decodeToken, uidToken } from "../firebase/admin.token";
 import userSchema from "../schemas-joi/user.schemajoi";
 import { userUniqueSchema } from "../schemas-joi/user.schemajoi";
+import generatecode from '../utilities/generateCode'
+import sendEmail from '../utilities/sendGrid'
+import lenderSchema from "../schemas-joi/lender.schemajoi";
+
 
 export const authRouter = express.Router();
 authRouter.use(express.json());
@@ -116,8 +120,27 @@ authRouter.put('/users/:id/:role', decodeToken, async (req: Request, res: Respon
     }
 })
 
-// Como usuario registrado puede acceder a los datos personales de Mi cuenta para verlos.
-authRouter.get('/user/:id', decodeToken, async (req: Request, res: Response) => {
+// Para postularse a ser prestador 
+authRouter.post('/users/lender', decodeToken, validator.body(lenderSchema), async (req: Request, res: Response) => {
+    let cliente = await pool.connect();
+    try {
+        const { cc_user_fk, conductor } = req.body;
+        const result = await cliente.query('INSERT INTO lender (cc_user_fk, conductor) VALUES ($1, $2)', [cc_user_fk, conductor]);
+        if (result.rowCount > 0) {
+            return res.status(200).json({ message: "Lender created" });
+        } else {
+            return res.status(500).json({ message: "Error creating lender" });
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Internal Server Error" });
+    } finally {
+        cliente.release(true);
+    }
+})
+
+authRouter.get('/activation-email/:code', async (req: Request, res: Response) => {
+
     let cliente = await pool.connect();
     try {
         const { id } = req.params;

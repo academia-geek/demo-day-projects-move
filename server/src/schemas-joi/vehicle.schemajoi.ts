@@ -22,6 +22,7 @@ const vehicleSchema = Joi.object({
     limpieza: Joi.string(),
     tipo_combustible: Joi.string(),
     valor_combustible: Joi.number(),
+    zone: Joi.array()
 })
 
 export default vehicleSchema;

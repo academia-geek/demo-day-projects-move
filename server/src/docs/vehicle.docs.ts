@@ -168,4 +168,27 @@
  *          401:
  *              description: Unauthorized
  * 
+ * @swagger
+ * vehicles/range/:inicio/:fin:
+ *  get:
+ *      summary: Trae los vehiculos por un rango de fechas
+ *      tags: [vehicles]
+ *      parameters:
+ *          - in: path
+ *            name: inicio
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: Fecha de inicio (AAA-MM-DD)
+ *          - in: path
+ *            name: fin
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: Fecha de fin (AAA-MM-DD)
+ *      responses:
+ *          200:
+ *              description: Lista los vehiculos por fecha
+ *          
+ *              
  */

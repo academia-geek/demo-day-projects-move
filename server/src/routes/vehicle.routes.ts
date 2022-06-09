@@ -15,7 +15,7 @@ vehicleRouter.use(express.json());
 
 vehicleRouter.get("/", async (req: Request, res: Response) => {
     try {
-        const vehicles = await collectionVehicles.vehicles.find({}).toArray();
+        const vehicles = await collectionVehicles.vehicles.find().toArray();
         res.json(vehicles).status(200);
     } catch (error) {
         console.log(error);
@@ -98,4 +98,29 @@ vehicleRouter.delete("/:id", decodeToken, async (req: Request, res: Response) =>
     }
 })
 
+vehicleRouter.get("/range/:inicio/:fin", async (req: Request, res: Response) => {
+    const { inicio, fin } = req.params;
+    try {
+        const vehicles = await collectionVehicles.vehicles.find().toArray();
+        const fecha = vehicles.map(vehicle => {
+            const f_inicio = new Date(vehicle.fecha_disponibilidad.fecha_inicio);
+            const f_fin = new Date(vehicle.fecha_disponibilidad.fecha_fin);
+            const f_inicio_param = new Date(inicio);
+            const f_fin_param = new Date(fin);
+            if (f_inicio <= f_inicio_param && f_fin >= f_fin_param && vehicle.activo === true) {
+                return {
+                    _id: vehicle._id,
+                    url_image: vehicle.url_image,
+                    modelo: vehicle.modelo,
+                    fecha_disponibilidad: vehicle.fecha_disponibilidad,
+                    gama: vehicle.gama
+                };
+            }
+        })
+        return res.json(fecha).status(200);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+})
 
