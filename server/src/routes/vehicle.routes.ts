@@ -98,6 +98,7 @@ vehicleRouter.delete("/:id", decodeToken, async (req: Request, res: Response) =>
     }
 })
 
+// Trae los vehiculos por un rango de fechas, informacion poco sensible
 vehicleRouter.get("/range/:inicio/:fin", async (req: Request, res: Response) => {
     const { inicio, fin } = req.params;
     try {

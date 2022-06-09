@@ -8,7 +8,7 @@ import validator from '../utilities/validator'
 
 import { collectionUsers } from "../services/database.service";
 
-import { decodeToken, uidToken } from "../firebase/admin.token";
+import { decodeToken, tokenAdmin, uidToken } from "../firebase/admin.token";
 import userSchema from "../schemas-joi/user.schemajoi";
 import { userUniqueSchema } from "../schemas-joi/user.schemajoi";
 import generatecode from '../utilities/generateCode'
@@ -43,7 +43,7 @@ authRouter.post('/login', validator.body(authSchema), async (req: Request, res: 
 })
 
 // Lista de usuario pero se debe tener permisos de admin
-authRouter.get('/users', decodeToken, async (req: Request, res: Response) => {
+authRouter.get('/users', tokenAdmin, async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
         const result = await cliente.query('SELECT * FROM users');
@@ -103,7 +103,7 @@ authRouter.put('/users/:id', decodeToken, validator.body(userSchema), async (req
 })
 
 // Volver a un usuario administrador
-authRouter.put('/users/:id/:role', decodeToken, async (req: Request, res: Response) => {
+authRouter.put('/users/:id/:role', tokenAdmin, async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
         const { id } = req.params;
