@@ -21,7 +21,7 @@ const Sidebar = () => {
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
                             <li>
                                 <Link to="/profile" className="nav-link px-0 align-middle text-success">
-                                    <i class="fas fa-user text-success"></i> <span className="ms-1 d-none d-sm-inline">Perfil</span></Link>
+                                    <i className="fas fa-user text-success"></i> <span className="ms-1 d-none d-sm-inline">Perfil</span></Link>
                             </li>
                             <li>
                                 <Link to="/rpresta" className="nav-link px-0 align-middle text-success">

@@ -4,9 +4,11 @@ import {
   createUserWithEmailAndPassword,
   deleteUser,
   getAuth,
+  reauthenticateWithPopup,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
   updateProfile,
 } from "firebase/auth";
 import Swal from "sweetalert2";
@@ -23,7 +25,7 @@ export const startLoginEmailPassword = (email, password) => {
         Swal.fire("Bien Hecho!", "Inicio de sesión exitoso", "success");
       })
       .catch((error) => {
-        console.log(error);        
+        console.log(error);
       });
   };
 };
@@ -43,6 +45,10 @@ export const startGoogleLogin = () => {
     signInWithPopup(auth, google)
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
+        function reauthWithGoogle() {
+          return reauthenticateWithPopup(auth, google);
+        }
+        updatePassword(user, "new password").catch((e) => reauthWithGoogle());
         Swal.fire(
           "Bien Hecho!",
           "Inicio de sesión con google exitoso",
@@ -63,12 +69,17 @@ export const startFacebookLogin = () => {
     signInWithPopup(auth, facebook)
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
+        function reauthWithFacebook() {
+          return reauthenticateWithPopup(auth, facebook);
+        }
+        updatePassword(user, "new password").catch((e) => reauthWithFacebook());
         Swal.fire(
           "Bien Hecho!",
           "Inicio de sesión con facebook exitoso",
           "success"
         );
       })
+
       .catch((error) => {
         console.log(error);
         Swal.fire("Oops...", "Ha ocurrido un error", "error");
