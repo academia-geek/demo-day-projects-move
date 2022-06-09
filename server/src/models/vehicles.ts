@@ -1,5 +1,9 @@
 import { Int32, ObjectId } from "mongodb";
 
+interface fecha_disponibilidad {
+    fecha_inicio: string;
+    fecha_fin: string;
+}
 export interface Vehicles {
     id?: ObjectId;
     cc_owner: String;
@@ -9,7 +13,7 @@ export interface Vehicles {
     marca: String;
     color: string;
     linea: String;
-    fecha_disponibilidad: Object;
+    fecha_disponibilidad: fecha_disponibilidad;
     url_soat: String;
     url_tecnicomecanica: String;
     url_ficha_tecnica: String;
@@ -22,7 +26,7 @@ export interface Vehicles {
     limpieza: Int32
     tipo_combustible: String
     valor_combustible: Int32
-
+    zone: Array<string>; // String
 }
 
 
