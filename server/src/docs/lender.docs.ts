@@ -37,7 +37,19 @@
  *              balance_lender: 0
  *              total_loans: 0
  *              commissions: 0
- *
+ * @swagger
+ * components:
+ *  schemas:
+ *      price-vehicle:
+ *          type: object
+ *          properties:
+ *              price:
+ *                  type: string
+ *                  description: precio que propone el prestador de sus vehiculo
+ *          required:
+ *              - price
+ *          example:
+ *              price: 20000
  * @swagger
  * /auth/users/lender/:
  *  post:
@@ -51,6 +63,31 @@
  *              application/json:
  *                  schema:
  *                      type: object
- *                      $ref: '#/components/schemas/lender'   
- *              
+ *                      $ref: '#/components/schemas/lender'
+ * @swagger
+ * /lender/:cc_user:
+ *  put:
+ *      summary: Ingresar el valor del vehiculo
+ *      tags: [lenders]
+ *      security:
+ *          - BearerAuth: []
+ *      parameters:
+ *          - in: path
+ *            name: cc_user
+ *            required: true
+ *            type": string
+ *            description: cc_user del properties del vehiculo
+ *      requestBody:     
+ *           content:
+ *               application/json:
+ *                   schema:
+ *                       type: object
+ *                       $ref: '#/components/schemas/price-vehicle'
+ *      responses:
+ *          201:
+ *              description: El precio del vehiculo ha sido actualizado
+ *          400:
+ *              description: Bad Request o No se pudo actualizar el precio ya que no eres prestador
+ *          500:
+ *              description: internal server error            
  */
