@@ -32,3 +32,18 @@ adminRouter.get('/lender', tokenAdmin, async (req: Request, res: Response) => {
         res.status(500).send(error.message);
     }
 })
+
+
+// Puedo ver los usuarios registrados como conductor de su vehiculo o los que ofrecieron solo su vehiculo
+adminRouter.get('/info-lender', tokenAdmin, async (req: Request, res: Response) => {
+    let cliente = await pool.connect();
+    try {
+        const result = await cliente.query(`SELECT * FROM service a
+        INNER JOIN lender b ON a.id_lender_fk = b.id_lender
+        INNER JOIN users c ON b.cc_user_fk = c.cc_user`);
+        res.status(200).send(result.rows);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error.message);
+    }
+})
