@@ -15,8 +15,12 @@ vehicleRouter.use(express.json());
 
 vehicleRouter.get("/", async (req: Request, res: Response) => {
     try {
-        const vehicles = await collectionVehicles.vehicles.find().toArray();
-        res.json(vehicles).status(200);
+        const vehicles = await collectionVehicles.vehicles.find({}).toArray();
+        if (vehicles) {
+            res.json(vehicles).status(200);
+        } else {
+            res.status(404).json({ message: "vehicle not found" });
+        }
     } catch (error) {
         console.log(error);
         res.status(500).send(error);
