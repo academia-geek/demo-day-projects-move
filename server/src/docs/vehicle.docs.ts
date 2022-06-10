@@ -5,63 +5,105 @@
  *      vehicle:
  *          type: object
  *          properties:
- *              type:
+ *              cc_owner:
  *                  type: string
- *                  description: item of the vehicle
- *              subtitle:
+ *                  description: cedula del propietario del vehiculo
+ *              placa:
  *                  type: object
- *                  description: item of the vehicle
- *              share:
+ *                  description: placa del vehiculo
+ *              url_image:
+ *                  type: array
+ *                  description: array de imagenes del vehiculo montadas por el usuario
+ *              modelo:
+ *                  type: number
+ *                  description: modelo del vehiculo
+ *              color:
+ *                  type: string
+ *                  description: color del vehiculo
+ *              fecha_disponibilidad:
  *                  type: object
- *                  description: item of the vehicle
- *              hub:
- *                  type: object
- *                  description: item of the vehicle
- *              artists:
+ *                  description: Lista de fecha de disponibilidad
+ *              url_soat:
  *                  type: string
- *                  description: item of the vehicle
- *              layout:
+ *                  description: url de la imagen del soat del vehiculo
+ *              url_tecnicomecanica:
  *                  type: string
- *                  description: item of the vehicle
- *              key:
+ *                  description: url de la imagen del tecnomecanica del vehiculo
+ *              url_ficha_tecnica:
  *                  type: string
- *                  description: item of the vehicle
- *              title:
+ *                  description: url de la imagen de la ficha tecnica del vehiculo
+ *              activo:
+ *                  type: boolean
+ *                  description: estado del vehiculo en la plataforma
+ *              gama:
+ *                  type: array
+ *                  description: Vehiculo es de gama [alta, media, baja]
+ *              comision_renta:
+ *                  type: decimal
+ *                  description: porcentaje de la comision de renta del vehiculo
+ *              poliza:
  *                  type: string
- *                  description: item of the vehicle
- *              url:
+ *                  description: url de la imagen del soat del vehiculo
+ *              tipo_vehiculo:
  *                  type: string
- *                  description: item of the vehicle
+ *                  description: que tipo de vehiculo es [carro, moto, patineta]
+ *              tipo_combustible:
+ *                  type: string
+ *                  description: que tipo de combustible es [gasolina, diesel, gas, electrico]
+ *              valor_combustible:
+ *                  type: boolean
+ *                  description: valor de combustible del vehiculo en el mercado de las ciudades
+ *              zone:
+ *                  type: array
+ *                  description: Sede de los vehiculos estan en las zonas [Pereira, Medellin, Cali, Manizales] 
+ *              price:
+ *                  type: boolean
+ *                  description: el usuario puede ingresar el valor que tiene su vehiculo
  *          required:
- *              - type
- *              - subtitle
- *              - share
- *              - images
- *              - hub
- *              - artists
- *              - layout
- *              - key
- *              - title
- *              - url
+ *              - cc_owner
+ *              - placa
+ *              - url_image
+ *              - modelo
+ *              - color
+ *              - fecha_disponibilidad
+ *              - url_soat
+ *              - url_tecnicomecanica
+ *              - url_ficha_tecnica
+ *              - activo
+ *              - gama
+ *              - comision_renta
+ *              - poliza
+ *              - tipo_vehiculo
+ *              - tipo_combustible
+ *              - valor_combustible
+ *              - zone
+ *              - price
  *          example:
- *              type: "MUSIC"
- *              subtitle: "Moses Sumney"
- *              share: {}
- *              images: {}
- *              hub: {}
- *              artists: [{}]
- *              layout: "5"
- *              key: "501844142"
- *              title: "Keeps Me Alive"
+ *              cc_owner: "1005206688"
+ *              placa: "ABC123"
+ *              url_image: [{"url": "https://upload.wikimedia.org/wikipedia/commons/2/29/1969_Ford_Mustang_Mach_1_%2837901276352%29.jpg"}]
+ *              modelo: 2018
+ *              color: "rojo"
+ *              fecha_disponibilidad: {"fecha_inicio": "2018-01-01","fecha_fin": "2018-12-31"}
+ *              url_soat: "https://www.soat.com/"
+ *              url_tecnicomecanica: "https://www.tecnomecanica.com/"
+ *              url_ficha_tecnica: "https://www.fichatecnica.com/"
  *              url: "https://www.shazam.com/track/501844142/keeps-me-alive"
+ *              activo: false
+ *              gama: "alta"
+ *              comision_renta: 0.1
+ *              poliza: true
+ *              tipo_vehiculo: "combustion"
+ *              tipo_combustible: "gasolina"
+ *              valor_combustible: 20000
+ *              zone: ["Pereira", "Medellin", "Cali", "Manizales"]
+ *              price: 20000
  * 
  * @swagger
  * /vehicles:
  *  get:
  *    summary: List all vehicles
  *    tags: [vehicles]
- *    security:
- *      - BearerAuth: []
  *    responses:
  *      200:
  *          description: A list of vehicles
@@ -71,22 +113,22 @@
  *                      type: array
  *                      items:
  *                          $ref: '#/components/schemas/vehicle'
- *      401:
- *          description: Unauthorized
- * 
+*      400:
+*           description: Bad Request
+*      500:
+*           description: internal server error  
+ * @swagger
  * /vehicles/:id:
  *  get:
  *      summary: List by id of the vehicle
  *      tags: [vehicles]
- *      security:
- *          - BearerAuth: []
  *      parameters:
  *          - in: path
  *            name: id
  *            schema:
  *              type: string
  *            required: true
- *            description: Id of the vehicle
+ *            description: Id of the vehicle registered in the platform
  *      responses:
  *          200:
  *              description: A vehicle
