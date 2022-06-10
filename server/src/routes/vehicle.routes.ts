@@ -15,8 +15,12 @@ vehicleRouter.use(express.json());
 
 vehicleRouter.get("/", async (req: Request, res: Response) => {
     try {
-        const vehicles = await collectionVehicles.vehicles.find().toArray();
-        res.json(vehicles).status(200);
+        const vehicles = await collectionVehicles.vehicles.find({}).toArray();
+        if (vehicles) {
+            res.json(vehicles).status(200);
+        } else {
+            res.status(404).json({ message: "vehicle not found" });
+        }
     } catch (error) {
         console.log(error);
         res.status(500).send(error);
@@ -98,6 +102,7 @@ vehicleRouter.delete("/:id", decodeToken, async (req: Request, res: Response) =>
     }
 })
 
+// Trae los vehiculos por un rango de fechas, informacion poco sensible
 vehicleRouter.get("/range/:inicio/:fin", async (req: Request, res: Response) => {
     const { inicio, fin } = req.params;
     try {
