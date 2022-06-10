@@ -10,6 +10,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 import { decodeToken } from "./firebase/admin.token";
 import { adminRouter } from "./routes/admin.routes";
+import { lenderRouter } from "./routes/lender.routes";
 
 const app = express();
 dotenv.config();
@@ -72,6 +73,7 @@ connectDatabase()
         app.use("/vehicles", vehicleRouter)
         app.use("/auth", authRouter)
         app.use("/admin", adminRouter)
+        app.use("/lender", lenderRouter)
         app.listen(app.get("port"), () => {
             console.log(`Server running on port ${app.get("port")}`);
         })
