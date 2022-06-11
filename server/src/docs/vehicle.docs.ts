@@ -118,7 +118,7 @@
 *      500:
 *           description: internal server error  
  * @swagger
- * /vehicles/:id:
+ * /vehicles/{id}:
  *  get:
  *      summary: List by id of the vehicle
  *      tags: [vehicles]
@@ -165,7 +165,7 @@
  *              description: Unauthorized         
  *                          
  * @swagger
- * /vehicles/:id:
+ * /vehicles/{id}:
  *  put:
  *      summary: Update a vehicle
  *      tags: [vehicles]
@@ -191,7 +191,7 @@
  *          401:
  *              description: Unauthorized
  * @swagger
- * /vehicles/:id:
+ * /vehicles/{id}:
  *  delete:
  *      summary: Delete a vehicle
  *      tags: [vehicles]
@@ -211,7 +211,7 @@
  *              description: Unauthorized
  * 
  * @swagger
- * vehicles/range/:inicio/:fin:
+ * /vehicles/range/{inicio}/{fin}:
  *  get:
  *      summary: Trae los vehiculos por un rango de fechas
  *      tags: [vehicles]
