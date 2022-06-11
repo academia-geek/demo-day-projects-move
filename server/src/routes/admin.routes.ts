@@ -75,3 +75,15 @@ adminRouter.get('/rented-cars/:inicio/:fin', tokenAdmin, async (req: Request, re
 })
 
 // Ver la lista de prestadores y el reporte de sus comisiones
+adminRouter.get('/lenders/report', tokenAdmin, async (req: Request, res: Response) => {
+    let cliente = await pool.connect();
+    try {
+        const lenders = await cliente.query(`SELECT * FROM lender`);
+        return res.status(200).send(lenders.rows);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error.message);
+    } finally {
+        cliente.release(true);
+    }
+})

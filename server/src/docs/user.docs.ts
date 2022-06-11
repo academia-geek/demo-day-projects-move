@@ -72,7 +72,7 @@
  *              description: internal server error    
  * 
  * @swagger
- * /auth/users/:cc_user:      
+ * /auth/users/{cc_user}:      
  *  put:
  *      summary: Actualizar los datos de un usuario
  *      tags: [user]
@@ -97,7 +97,7 @@
  *              description: internal server error
  * 
  * @swagger
- * /auth/users/:cc_user/:role:
+ * /auth/users/{cc_user}/{role}:
  *  put:
  *      summary: Volver administrador un usuario
  *      tags: [user]

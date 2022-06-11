@@ -65,7 +65,7 @@
  *                      type: object
  *                      $ref: '#/components/schemas/lender'
  * @swagger
- * /lender/:cc_user:
+ * /lender/{cc_user}:
  *  put:
  *      summary: Ingresar el valor del vehiculo
  *      tags: [lenders]
