@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 
-const CardCar = () => {
+const CardCar = (image, marca, modelo, precio) => {
   return (
       <Card className="col-sm-auto m-3" style={{ width: '18rem' }}>
         <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_960_720.jpg" />

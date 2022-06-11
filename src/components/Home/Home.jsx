@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Button, Carousel, Col, Container, Dropdown, DropdownButton, NavDropdown, Row } from "react-bootstrap";
+import Booking from "../Booking";
 import Footer from "../Footer";
 import NavBar from "../Navbar";
 
@@ -68,77 +69,14 @@ const Home = () => {
       </Container>
 
       <Container className="m-auto p-5 text-center border d-flex flex-column ">
-        <h2>Reserva </h2>
-        <div className="input-group form-group mt-3">
-          <div className="p-2 bg-success text-white rounded-start w-25">
-            <span>Sede de Entrega</span>
-          </div>
-          <NavDropdown
-            className="border w-75 m-auto"
-            variant="outline-secondary"
-            title="Seleccione"
-            id="input-group-dropdown-1"
-          >
-            <Dropdown.Item href="#">Medellín (Aeropuerto Internacional José María Córdova)</Dropdown.Item>
-            <Dropdown.Item href="#">Cali(Aeropuerto Internacional Alfonso Bonilla Aragon)</Dropdown.Item>
-            <Dropdown.Item href="#">Bogóta(Aeropuerto Internacional El Dorado Luis Carlos Galán Sarmiento)</Dropdown.Item>
-          </NavDropdown>
-        </div>
-        <div className="input-group form-group mt-3">
-          <div className="p-2 bg-success text-white rounded-start w-25">
-            <span>Sede de Devolución</span>
-          </div>
-          <NavDropdown
-            className="border w-75 m-auto"
-            variant="outline-secondary"
-            title="Seleccione"
-            id="input-group-dropdown-1"
-          >
-            <Dropdown.Item href="#">Medellín (Aeropuerto Internacional José María Córdova)</Dropdown.Item>
-            <Dropdown.Item href="#">Cali(Aeropuerto Internacional Alfonso Bonilla Aragon)</Dropdown.Item>
-            <Dropdown.Item href="#">Bogóta(Aeropuerto Internacional El Dorado Luis Carlos Galán Sarmiento)</Dropdown.Item>
-          </NavDropdown>
-        </div>
-        <div className="input-group form-group mt-3">
-          <div className="p-2 bg-success text-white rounded-start w-25">
-            <span>Fecha de Entrega</span>
-          </div>
-          <input type="date" className="form-control" placeholder="Email"
-            name="email" />
-        </div>
-        <div className="input-group form-group mt-3">
-          <div className="p-2 bg-success text-white rounded-start w-25">
-            <span>Hora de Entrega</span>
-          </div>
-          <input type="time" className="form-control" placeholder="Email"
-            name="email" />
-        </div>
-        <div className="input-group form-group mt-3">
-          <div className="p-2 bg-success text-white rounded-start w-25">
-            <span>Fecha de Devolución</span>
-          </div>
-          <input type="date" className="form-control" placeholder="Email"
-            name="email" />
-        </div>
-        <div className="input-group form-group mt-3">
-          <div className="p-2 bg-success text-white rounded-start w-25">
-            <span>Hora de Devolución</span>
-          </div>
-          <input type="time" className="form-control" placeholder="Email"
-            name="email" />
-        </div>
-        <div className="form-group mt-4">
-          <input type="submit" value="Buscar"
-            className="btn bg-success text-white float-end "
-            name="login-btn" />
-        </div>
+        <Booking/>
       </Container>
 
       <Container className="p-5 text-center" id="preguntas-frecuentes">
         <h2>Preguntas Frecuentes</h2>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Cómo es el Proceso para rentar un vehículo?">
-          <Dropdown.ItemText> 
-            <div>Entra a nuestra página, logueate e ingresa a la sección de reservas.</div>
+          <Dropdown.ItemText > 
+            <div >Entra a nuestra página, logueate e ingresa a la sección de reservas.</div>
             <div>Diligencia las sedes y fechas en las que quieres rentar tu Move.</div>
             <div>Escoge entre categorias y vehículos disponibles.</div>
             <div>Completa los datos personales para la reserva.</div>

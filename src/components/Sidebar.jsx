@@ -30,7 +30,7 @@ const Sidebar = () => {
                             <li>
                                 <Link to="/vehicles" className="nav-link px-0 align-middle text-success">
                                     <i className="fas fa-car text-success"></i> <span className="ms-1 d-none d-sm-inline">Vehiculos</span> </Link>
-                                {/* <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                     <li className="w-100">
                                         <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Alta</span> </Link>
                                     </li>
@@ -43,7 +43,7 @@ const Sidebar = () => {
                                     <li>
                                         <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Eléctricos</span> </Link>
                                     </li>
-                                </ul> */}
+                                </ul>
                             </li>
                             <li onClick={() => dispatch(startLogout())}>
                                 <Link to="#" className="nav-link px-0 align-middle text-success">
