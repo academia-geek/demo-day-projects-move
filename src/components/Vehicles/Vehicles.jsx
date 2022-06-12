@@ -1,23 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap';
-import { url } from '../../helpers/url';
-
+import { urlv } from '../../helpers/url';
 
 const Vehicles = () => {
   const [carArray, setCarArray] = useState([]);
   const getData = async (url) => {
     axios.get(url)
       .then(resp => {
-        for (let i = 0; i < resp.data.results.length; i++) {
-          setCarArray([])
-          axios.get(resp.data.results[i].url)
-            .then(result => {
-              setCarArray(carArray => [...carArray, result.data])
-            })
-        }
-      })
-  }
+        setCarArray(resp.data);
+    }).catch(error=> console.log(error))
+  }    
 
   const showDetail = (detailCar) => {
     localStorage.setItem('detailCar', JSON.stringify(detailCar))
@@ -25,7 +18,7 @@ const Vehicles = () => {
   }
 
   useEffect(() => {
-    getData(url);
+    getData(urlv);
   }, [])
   return (
     <>
@@ -34,11 +27,14 @@ const Vehicles = () => {
     {
             carArray?.map((car, index) => (
               <Card className="col-sm-auto m-3" key={index} style={{ width: '18rem' }}>
-              <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2021/09/20/23/03/car-6642036_960_720.jpg" />
+              <Card.Img variant="top" src={car.url_image[0].url} />
               <Card.Body className="d-flex justify-content-around">
                 <div>
-                <Card.Title>Nombre</Card.Title>
-                <Card.Text>$389.56</Card.Text>
+                <Card.Title>{car.title}</Card.Title>
+                <Card.Title>{car.modelo}</Card.Title>
+                <Card.Title>{car.tipo_vehiculo}</Card.Title>
+                <Card.Title>{car.gama}</Card.Title>
+                <Card.Text>${car.price}</Card.Text>
                 </div>
                 <div >
                 <Button className="mt-2" variant="success" href={`/detail/${car.name}`} onClick={() => showDetail(car)}>Ver Detalle</Button>

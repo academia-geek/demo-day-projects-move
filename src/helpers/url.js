@@ -1,1 +1,1 @@
-export const url = "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0/"
+export const urlv = "http://35.211.155.160:5000/vehicles/"
