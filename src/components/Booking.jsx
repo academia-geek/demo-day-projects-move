@@ -13,9 +13,9 @@ const Booking = () => {
         variant="outline-secondary"
         title="Seleccione"
         id="input-group-dropdown-1"          >
-        <Dropdown.Item href="#">Medellín (Aeropuerto Internacional José María Córdova)</Dropdown.Item>
-        <Dropdown.Item href="#">Cali(Aeropuerto Internacional Alfonso Bonilla Aragon)</Dropdown.Item>
-        <Dropdown.Item href="#">Bogóta(Aeropuerto Internacional El Dorado Luis Carlos Galán Sarmiento)</Dropdown.Item>
+        <Dropdown.Item className="text-center" href="#">Medellín</Dropdown.Item>
+        <Dropdown.Item className="text-center" href="#">Manizales</Dropdown.Item>
+        <Dropdown.Item className="text-center" href="#">Pereira</Dropdown.Item>
       </NavDropdown>
     </div>
     <div className="input-group form-group mt-3">
@@ -28,9 +28,9 @@ const Booking = () => {
         title="Seleccione"
         id="input-group-dropdown-1"
       >
-        <Dropdown.Item href="#">Medellín (Aeropuerto Internacional José María Córdova)</Dropdown.Item>
-        <Dropdown.Item href="#">Cali(Aeropuerto Internacional Alfonso Bonilla Aragon)</Dropdown.Item>
-        <Dropdown.Item href="#">Bogóta(Aeropuerto Internacional El Dorado Luis Carlos Galán Sarmiento)</Dropdown.Item>
+        <Dropdown.Item className="text-center" href="#">Medellín</Dropdown.Item>
+        <Dropdown.Item className="text-center" href="#">Manizales</Dropdown.Item>
+        <Dropdown.Item className="text-center" href="#">Pereira</Dropdown.Item>
       </NavDropdown>
     </div>
     <div className="input-group form-group mt-3">

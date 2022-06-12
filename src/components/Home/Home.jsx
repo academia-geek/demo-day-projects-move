@@ -72,11 +72,11 @@ const Home = () => {
         <Booking/>
       </Container>
 
-      <Container className="p-5 text-center" id="preguntas-frecuentes">
+      <Container className="p-5 text-left" id="preguntas-frecuentes">
         <h2>Preguntas Frecuentes</h2>
         <DropdownButton variant="light" id="dropdown-item-button" title="¿Cómo es el Proceso para rentar un vehículo?">
           <Dropdown.ItemText > 
-            <div >Entra a nuestra página, logueate e ingresa a la sección de reservas.</div>
+          <div >Entra a nuestra página, logueate e ingresa a la sección de reservas.</div>
             <div>Diligencia las sedes y fechas en las que quieres rentar tu Move.</div>
             <div>Escoge entre categorias y vehículos disponibles.</div>
             <div>Completa los datos personales para la reserva.</div>
