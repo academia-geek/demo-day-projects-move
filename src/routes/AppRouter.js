@@ -9,7 +9,7 @@ import HomePrivate from "../components/HomePrivate";
 import Login from "../components/Login/Login";
 import NavbarPriv from "../components/NavbarPriv";
 import Profile from "../components/Profile";
-import RegisterPrest from "../components/RegisterPrest";
+import RegisterPrest from "../components/Prestador/RegisterPrest";
 import Sidebar from "../components/Sidebar";
 import SignUp from "../components/SignUp/SignUp";
 import GamaAlta from "../components/Vehicles/GamaAlta";
@@ -19,6 +19,8 @@ import Electricos from "../components/Vehicles/Electricos";
 import Vehicles from "../components/Vehicles/Vehicles";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
+import HomeP from "../components/Prestador/HomeP";
+import DetailPrestador from "../components/Prestador/DetailPrestador";
 
 const AppRouter = () => {
   const [checking, setChecking] = useState(true);
@@ -159,6 +161,17 @@ const AppRouter = () => {
             </PrivateRoutes>
           }
         />
+       
+        <Route
+          path="/detail/:id"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar />
+              <DetailCar />
+              <Footer />
+            </PrivateRoutes>
+          }
+        />
 
         <Route
           path="/rpresta"
@@ -171,11 +184,21 @@ const AppRouter = () => {
           }
         />
         <Route
-          path="/detail/:id"
+          path="/homep"
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
-              <DetailCar />
+              <HomeP />
+              <Footer />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/detailp/:id"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar />
+              <DetailPrestador />
               <Footer />
             </PrivateRoutes>
           }
