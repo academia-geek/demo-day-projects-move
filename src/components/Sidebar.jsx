@@ -19,6 +19,10 @@ const Sidebar = () => {
                             /></span>
                         </Link>
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                        <li>
+                                <Link to="/homepriv" className="nav-link px-0 align-middle text-success">
+                                    <i className="fas fa-home text-success"></i> <span className="ms-1 d-none d-sm-inline">Home</span></Link>
+                            </li>
                             <li>
                                 <Link to="/profile" className="nav-link px-0 align-middle text-success">
                                     <i className="fas fa-user text-success"></i> <span className="ms-1 d-none d-sm-inline">Perfil</span></Link>
@@ -29,7 +33,7 @@ const Sidebar = () => {
                             </li>
                             <li>
                                 <Link to="/vehicles" className="nav-link px-0 align-middle text-success">
-                                    <i className="fas fa-car text-success"></i> <span className="ms-1 d-none d-sm-inline">Vehiculos</span> </Link>
+                                    <i className="fas fa-car text-success"></i> <span className="ms-1 d-none d-sm-inline">Vehículos</span> </Link>
                                 <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                     <li className="w-100">
                                         <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Alta</span> </Link>

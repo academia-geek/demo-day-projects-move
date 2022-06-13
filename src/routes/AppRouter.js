@@ -5,11 +5,17 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DetailCar from "../components/DetailCar";
 import Footer from "../components/Footer";
 import Home from "../components/Home/Home";
+import HomePrivate from "../components/HomePrivate";
 import Login from "../components/Login/Login";
+import NavbarPriv from "../components/NavbarPriv";
 import Profile from "../components/Profile";
 import RegisterPrest from "../components/RegisterPrest";
 import Sidebar from "../components/Sidebar";
 import SignUp from "../components/SignUp/SignUp";
+import GamaAlta from "../components/Vehicles/GamaAlta";
+import GamaMedia from "../components/Vehicles/GamaMedia";
+import Economicos from "../components/Vehicles/Economicos";
+import Electricos from "../components/Vehicles/Electricos";
 import Vehicles from "../components/Vehicles/Vehicles";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
@@ -78,13 +84,66 @@ const AppRouter = () => {
             </PublicRoutes>
           }
         />
-
+        <Route
+          path="/homepriv"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar />
+              <HomePrivate />
+              <Footer />
+            </PrivateRoutes>
+          }
+        />
         <Route
           path="/vehicles"
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
               <Vehicles />
+              <Footer />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/galta"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar />
+              <NavbarPriv />
+              <GamaAlta />
+              <Footer />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/gmedia"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar />
+              <NavbarPriv />
+              <GamaMedia />
+              <Footer />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/economicos"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar />
+              <NavbarPriv />
+              <Economicos />
+              <Footer />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/electricos"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar />
+              <NavbarPriv />
+              <Electricos />
               <Footer />
             </PrivateRoutes>
           }

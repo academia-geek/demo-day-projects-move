@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap';
 import { urlv } from '../../helpers/url';
+import NavbarPriv from '../NavbarPriv';
 
 const Vehicles = () => {
   const [carArray, setCarArray] = useState([]);
@@ -22,6 +23,7 @@ const Vehicles = () => {
   }, [])
   return (
     <>
+    <NavbarPriv />
     <div className="bg-transparent" style={{marginLeft:'300px'}}>
     <div className="row m-3" >
     {
