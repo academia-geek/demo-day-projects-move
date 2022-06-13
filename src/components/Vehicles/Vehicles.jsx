@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap';
 import { urlv } from '../../helpers/url';
+import NavbarPriv from '../NavbarPriv';
 
 const Vehicles = () => {
   const [carArray, setCarArray] = useState([]);
@@ -22,6 +23,7 @@ const Vehicles = () => {
   }, [])
   return (
     <>
+    <NavbarPriv />
     <div className="bg-transparent" style={{marginLeft:'300px'}}>
     <div className="row m-3" >
     {
@@ -30,10 +32,10 @@ const Vehicles = () => {
               <Card.Img variant="top" src={car.url_image[0].url} />
               <Card.Body className="d-flex justify-content-around">
                 <div>
-                <Card.Title>{car.title}</Card.Title>
-                <Card.Title>{car.modelo}</Card.Title>
-                <Card.Title>{car.tipo_vehiculo}</Card.Title>
-                <Card.Title>{car.gama}</Card.Title>
+                <Card.Title>{car.marca}</Card.Title>
+                <Card.Title>{car.linea}</Card.Title>
+                <Card.Text>{car.tipo_vehiculo}</Card.Text>
+                <Card.Text>{car.gama}</Card.Text>
                 <Card.Text>${car.price}</Card.Text>
                 </div>
                 <div >

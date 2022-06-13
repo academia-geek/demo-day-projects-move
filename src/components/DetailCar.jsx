@@ -19,8 +19,10 @@ const DetailCar = () => {
         <Card.Img variant="top" src={car.url_image[0].url} />
         <Card.Body className="d-flex justify-content-around">
           <div>
-          <Card.Title>{car.color}</Card.Title>
-          <Card.Title>{car.modelo}</Card.Title>
+          <Card.Title>{car.marca}</Card.Title>
+          <Card.Title>{car.linea}</Card.Title>
+          <Card.Text>{car.color}</Card.Text>
+          <Card.Text>{car.modelo}</Card.Text>
           <Card.Text>{car.gama}</Card.Text>
           <Card.Text>{car.poliza}</Card.Text>
           <Card.Text>{car.tipo_vehiculo}</Card.Text>

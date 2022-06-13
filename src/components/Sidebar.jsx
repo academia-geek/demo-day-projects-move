@@ -19,31 +19,25 @@ const Sidebar = () => {
                             /></span>
                         </Link>
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                        <li>
+                                <Link to="/homepriv" className="nav-link px-0 align-middle text-success">
+                                    <i className="fas fa-home text-success"></i> <span className="ms-1 d-none d-sm-inline">Home</span></Link>
+                            </li>
                             <li>
                                 <Link to="/profile" className="nav-link px-0 align-middle text-success">
                                     <i className="fas fa-user text-success"></i> <span className="ms-1 d-none d-sm-inline">Perfil</span></Link>
                             </li>
                             <li>
                                 <Link to="/rpresta" className="nav-link px-0 align-middle text-success">
-                                    <i className="fas fa-address-card text-success"></i> <span className="ms-1 d-none d-sm-inline">Prestar Servicios</span> </Link>
+                                    <i className="fas fa-address-card text-success"></i> <span className="ms-1 d-none d-sm-inline">Afiliarse</span> </Link>
+                            </li>
+                            <li>
+                                <Link to="/homep" className="nav-link px-0 align-middle text-success">
+                                    <i className="fas fa-address-card text-success"></i> <span className="ms-1 d-none d-sm-inline">Prestador</span> </Link>
                             </li>
                             <li>
                                 <Link to="/vehicles" className="nav-link px-0 align-middle text-success">
-                                    <i className="fas fa-car text-success"></i> <span className="ms-1 d-none d-sm-inline">Vehiculos</span> </Link>
-                                <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                    <li className="w-100">
-                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Alta</span> </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Media</span> </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Gama Baja</span> </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Eléctricos</span> </Link>
-                                    </li>
-                                </ul>
+                                    <i className="fas fa-car text-success"></i> <span className="ms-1 d-none d-sm-inline">Vehículos</span> </Link>
                             </li>
                             <li onClick={() => dispatch(startLogout())}>
                                 <Link to="#" className="nav-link px-0 align-middle text-success">
