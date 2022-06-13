@@ -7,6 +7,7 @@ const userSchema = Joi.object({
     city: Joi.string().min(3).required(),
     address: Joi.string().min(3).required(),
     age: Joi.string().min(2).required(),
+    email: Joi.string().email()
 })
 
 export default userSchema;
@@ -18,4 +19,5 @@ export const userUniqueSchema = Joi.object({
     city: Joi.string().min(3).required(),
     address: Joi.string().min(3).required(),
     age: Joi.string().min(2).required(),
+    email: Joi.string().email()
 })

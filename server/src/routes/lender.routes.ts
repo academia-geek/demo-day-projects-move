@@ -20,13 +20,13 @@ lenderRouter.put('/:cc_user', tokenPrestador, async (req: Request, res: Response
         if (usersResult.rowCount === 0) {
             res.status(400).json({ message: "El usuario no esta registrado" });
         } else {
-            console.log(usersResult.rows.map(row => row.cc_user));
+            // console.log(usersResult.rows.map(row => row.cc_user));
 
             const [result] = usersResult.rows.map((row) => row.cc_user)
-            console.log(result);
-            
+            // console.log(result);
+
             const vehicle = await collectionVehicles.vehicles.findOneAndUpdate({ cc_owner: result }, { $set: { price } });
-            console.log(vehicle, price);
+            // console.log(vehicle, price);
             if (!vehicle) {
                 return res.status(400).json({ message: `No se pudo registrar el precio comunicarse con el Administrador` });
             } else {
