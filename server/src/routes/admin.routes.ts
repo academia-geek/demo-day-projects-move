@@ -79,7 +79,7 @@ adminRouter.get('/rented-cars/:inicio/:fin', tokenAdmin, async (req: Request, re
 })
 
 // Ver la lista de prestadores y el reporte de sus comisiones
-adminRouter.get('/lenders/report', tokenAdmin, async (req: Request, res: Response) => {
+adminRouter.get('/lender/report', tokenAdmin, async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
         const lenders = await cliente.query(`SELECT * FROM lender`);
@@ -94,7 +94,7 @@ adminRouter.get('/lenders/report', tokenAdmin, async (req: Request, res: Respons
 
 //  Yo como usuario administrador puedo habilitar o inhabilitar un tomador
 // Traer todos los usuarios que son tomadores y su informacion
-adminRouter.get('/takers', tokenAdmin, async (req: Request, res: Response) => {
+adminRouter.get('/taker', tokenAdmin, async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
         const takers = await cliente.query(`SELECT * FROM taker INNER JOIN users ON taker.taker_cc_user = users.cc_user`);
@@ -129,7 +129,7 @@ adminRouter.get('/takers', tokenAdmin, async (req: Request, res: Response) => {
 })
 
 //  Yo como usuario administrador puedo habilitar o inhabilitar un tomador
-adminRouter.put('/takers/:cc_user', tokenAdmin, async (req: Request, res: Response) => {
+adminRouter.put('/taker/:cc_user', tokenAdmin, async (req: Request, res: Response) => {
     const { cc_user } = req.params;
     let cliente = await pool.connect();
     const { active_user } = req.body;
@@ -138,7 +138,7 @@ adminRouter.put('/takers/:cc_user', tokenAdmin, async (req: Request, res: Respon
         if (query.rowCount > 0) {
             return res.status(200).send({ message: 'Usuario actualizado' });
         } else {
-            return res.status(200).send({ message: 'No se pudo actualizar el usuario' });
+            return res.status(200).send({ message: 'No se encontro el usuario' });
         }
     } catch (error) {
         console.log(error);
