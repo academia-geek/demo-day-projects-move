@@ -1,12 +1,11 @@
 import React from 'react'
-import Booking from './Booking'
 
-const HomePrivate = () => {
+const AddVehicles = () => {
   return (
     <div style={{marginLeft:'300px', height:'100vh', marginRight:'50px'}}>
-    <Booking/>
+        
     </div>
   )
 }
 
-export default HomePrivate
+export default AddVehicles

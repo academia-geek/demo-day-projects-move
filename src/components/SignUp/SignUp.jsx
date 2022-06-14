@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { startSignUpEmailPassword } from "../../redux/actions/authReducer";
 
-
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .required("The name is required")
@@ -27,8 +26,19 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const [reset] = useForm();
 
-  return (
+  return (   
     
+    <div className="m-auto p-5" >
+        <div
+          className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+          <div className="card p-5">
+            <div className='d-flex justify-content-center px-5'><img
+              alt=""
+              src="https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png"
+              width="180"
+            />
+            </div>
+            <div className="card-body w-100"></div>
     <Formik
       initialValues={{
         name: "",
@@ -46,17 +56,7 @@ const SignUp = () => {
       }}
     >
       {({ isValid }) => (
-        <div className="m-auto p-5" >
-        <div
-          className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-          <div className="card p-5">
-            <div className='d-flex justify-content-center px-5'><img
-              alt=""
-              src="https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png"
-              width="180"
-            />
-            </div>
-            <div className="card-body w-100"></div>
+        
         <Form>
         <Field className="rounded-end form-control my-3" type="text" name="cc_user" placeholder="Documento de identificación" />
           <ErrorMessage name="cc_user" component="span" className="error" />
@@ -99,11 +99,14 @@ const SignUp = () => {
           </Link>
           </div>
         </Form>
+        )}
+        </Formik>
         </div>
             </div>
           </div>
-      )}
-    </Formik>
+      
+    
+    
   );
 };
 

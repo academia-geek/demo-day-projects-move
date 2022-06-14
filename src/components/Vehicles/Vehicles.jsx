@@ -23,7 +23,6 @@ const Vehicles = () => {
   }, [])
   return (
     <>
-    <NavbarPriv />
     <div className="bg-transparent" style={{marginLeft:'300px'}}>
     <div className="row m-3" >
     {
