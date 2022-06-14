@@ -83,8 +83,8 @@ export const tokenPrestador = async (req: Request, res: Response, next: NextFunc
                 const cliente = await pool.connect();
                 try {
                     const result = await cliente.query('SELECT role FROM users WHERE uid = $1', [uid]);
-                    console.log(result.rows[0].role);
-                    
+                    // console.log(result.rows[0].role);
+
                     if (result.rows[0].role === "prestador") {
                         return next();
                     } else {
