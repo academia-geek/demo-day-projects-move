@@ -21,6 +21,7 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
 import HomeP from "../components/Prestador/HomeP";
 import DetailPrestador from "../components/Prestador/DetailPrestador";
+import AddVehicles from "../components/Prestador/AddVehicles";
 
 const AppRouter = () => {
   const [checking, setChecking] = useState(true);
@@ -91,6 +92,7 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
+              <NavbarPriv/>
               <HomePrivate />
               <Footer />
             </PrivateRoutes>
@@ -101,6 +103,7 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
+              <NavbarPriv/>
               <Vehicles />
               <Footer />
             </PrivateRoutes>
@@ -156,6 +159,7 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
+              <NavbarPriv/>
               <Profile />
               <Footer />
             </PrivateRoutes>
@@ -167,6 +171,7 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
+              <NavbarPriv />
               <DetailCar />
               <Footer />
             </PrivateRoutes>
@@ -178,6 +183,7 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
+              <NavbarPriv />
               <RegisterPrest />
               <Footer />
             </PrivateRoutes>
@@ -188,7 +194,19 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
+              <NavbarPriv />
               <HomeP />
+              <Footer />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/addvehicle"
+          element={
+            <PrivateRoutes isAuth={isLoggedIn}>
+              <Sidebar />
+              <NavbarPriv />
+              <AddVehicles />
               <Footer />
             </PrivateRoutes>
           }
@@ -198,6 +216,7 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
+              <NavbarPriv />
               <DetailPrestador />
               <Footer />
             </PrivateRoutes>
