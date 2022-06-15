@@ -1,6 +1,6 @@
 // Carga de documentos
 import express, { Request, Response } from "express";
-import {processFileMiddleware} from "../middleware/upload";
+import uploadStorage from "../middleware/uploadStorage";
 import { format } from "util";
 import { Storage } from "@google-cloud/storage";
 
@@ -15,7 +15,7 @@ const bucket = storage.bucket(GOOGLE_CLOUD_BUCKET);
 
 export const upload = async (req: Request, res: Response) => {
   try {
-    await processFileMiddleware(req, res);
+    await uploadStorage(req, res);
 
     if (!req.file) {
       return res.status(400).send({ message: "Please upload a file!" });

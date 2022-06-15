@@ -71,33 +71,9 @@
  *          500:
  *              description: internal server error    
  * 
- * @swagger
- * /auth/users/:cc_user:      
- *  put:
- *      summary: Actualizar los datos de un usuario
- *      tags: [user]
- *      security:
- *          - BearerAuth: []
- *      parameters:
- *         - in: path
- *           name: cc_user
- *      requestBody:
- *          required: true
- *          content:
- *              application/json:
- *                  schema:  
- *                      type: object
- *                      $ref: '#/components/schemas/user'
- *      responses:
- *          200:
- *              description: usuario actualizado
- *          400:
- *              description: Bad Request 
- *          500:
- *              description: internal server error
  * 
  * @swagger
- * /auth/users/:cc_user/:role:
+ * /auth/users/{cc_user}/{role}:
  *  put:
  *      summary: Volver administrador un usuario
  *      tags: [user]
@@ -129,4 +105,75 @@
  *              description: usuarios obtenidos
  *          401:
  *              description: Unauthorized
+ * 
+ * @swagger
+ * /admin/lender:
+ *  get:
+ *      summary: Puedo ver los usuarios registrados como conductor de su vehiculo o los que ofrecieron solo su vehiculo
+ *      tags: [lender]
+ *      security:
+ *          - BearerAuth: []
+ *      responses:
+ *          200:
+ *              description: usuarios obtenidos
+ *          401:
+ *              description: Unauthorized
+ * @swagger
+ * /auth/users/lender:
+ *  post:
+ *      summary: Para postularse a ser prestador 
+ *      tags: [lender]
+ *      security:
+ *          - BearerAuth: []
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          cc_user_fk:
+ *                              type: string
+ *                              description: Cedula del usuario debe estar registrado
+ *                              example: "12345678"
+ *                          conductor:
+ *                              type: enum
+ *                              description: Si es conductor o no
+ *                              enum: [si, no]
+ *                              example: "si"
+ *      responses:
+ *          201:
+ *              description: created successful
+ *          400:
+ *              description: Bad Request
+ *          500:
+ *              description: internal server error
+ *         
+ * @swagger
+ * /auth/users/{cc_user}:
+ *  put:
+ *      summary: Como usuario registrado puede acceder a los datos personales de Mi cuenta para modificarlos. Excepto el correo electrónico.
+ *      tags: [user]
+ *      security:
+ *          - BearerAuth: []
+ *      parameters:
+ *          - in: path
+ *            name: cc_user
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      $ref: '#/components/schemas/user'
+ *      responses:
+ *          200:
+ *              description: usuario actualizado
+ *          400:
+ *              description: Bad Request
+ *          401:
+ *              description: Unauthorized
+ *          500:
+ *              description: internal server error
+ *                              
  */
