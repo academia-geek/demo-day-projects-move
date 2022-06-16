@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsdoc(swaggerSpec)))
 
-app.subscribe(connectDatabase())
+connectDatabase()
 // .then(() => {
 
 // }).catch((error: Error) => {
