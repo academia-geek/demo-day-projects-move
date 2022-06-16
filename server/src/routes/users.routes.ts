@@ -52,7 +52,7 @@ authRouter.get('/users', tokenAdmin, async (req: Request, res: Response) => {
         console.log(error);
         res.status(500).send(error.message);
     } finally {
-        cliente.release(true);
+        cliente.release();
     }
 })
 

@@ -60,6 +60,7 @@ export const CONFIG_POSTGRES = {
     database: process.env.DATABASE_POSTGRES,
     password: process.env.DB_PASSWORD_POSTGRES,
     port: 5432,
+    allowExitOnIdle: true
 }
 
 
