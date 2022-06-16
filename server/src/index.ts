@@ -67,19 +67,21 @@ app.get('/', (req, res) => {
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsdoc(swaggerSpec)))
 
-connectDatabase()
-    .then(() => {
-        app.use(morgan("dev"));
-        app.use("/vehicles", vehicleRouter)
-        app.use("/auth", authRouter)
-        app.use("/admin", adminRouter)
-        app.use("/lender", lenderRouter)
-        app.listen(app.get("port"), () => {
-            console.log(`Server running on port ${app.get("port")}`);
-        })
-    }).catch((error: Error) => {
-        console.log("Database connection failed", error);
-        process.exit();
-    })
+app.subscribe(connectDatabase())
+// .then(() => {
 
+// }).catch((error: Error) => {
+//     console.log("Database connection failed", error);
+//     process.exit();
+// })
 
+app.use(morgan("dev"));
+app.use("/vehicles", vehicleRouter)
+app.use("/auth", authRouter)
+app.use("/admin", adminRouter)
+app.use("/lender", lenderRouter)
+app.listen(app.get("port"), () => {
+    console.log(`Server running on port ${app.get("port")}`);
+})
+
+export default app;
