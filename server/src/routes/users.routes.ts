@@ -51,6 +51,8 @@ authRouter.get('/users', tokenAdmin, async (req: Request, res: Response) => {
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
+    } finally {
+        cliente.release(true);
     }
 })
 
@@ -152,6 +154,8 @@ authRouter.get('/activation-email/:code', async (req: Request, res: Response) =>
         }
     } catch (error) {
         res.status(500).send(error.message);
+    } finally {
+        cliente.release(true);
     }
 })
 
