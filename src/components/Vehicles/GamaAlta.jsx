@@ -1,11 +1,45 @@
-import React from 'react'
-import CardCar from '../CardCar'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Button, Card } from 'react-bootstrap';
+import { urlgalta } from '../../helpers/url';
 
 const GamaAlta = () => {
+  const [carArray, setCarArray] = useState([]);
+  const getData = async (url) => {
+    axios.get(url)
+      .then(resp => {
+        setCarArray(resp.data);
+    }).catch(error=> console.log(error))
+  }    
+
+  useEffect(() => {
+    getData(urlgalta);
+  }, [])
+
   return (
-    <div style={{marginLeft:'300px', height:'100vh', marginRight:'50px'}}>
-      <CardCar/>
-    </div>
+    <div className="bg-transparent" style={{marginLeft:'300px', height:'100vh', marginRight:'50px'}}>
+      <div className="row m-3" >
+    {
+            carArray?.map((car, index) => (
+              <Card className="col-sm-auto m-3" key={index} style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={car.url_image[0].url} />
+              <Card.Body className="d-flex justify-content-around">
+                <div>
+                <Card.Title>{car.marca}</Card.Title>
+                <Card.Title>{car.linea}</Card.Title>
+                <Card.Text>{car.tipo_vehiculo}</Card.Text>
+                <Card.Text>{car.gama}</Card.Text>
+                <Card.Text>${car.price}</Card.Text>
+                </div>
+                <div >
+                <Button className="mt-2" variant="success" href={`/detail/${car.name}`} >Ver Detalle</Button>
+                </div>
+              </Card.Body>
+            </Card> 
+      ))
+    }
+  </div>
+  </div>
   )
 }
 
