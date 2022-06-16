@@ -26,9 +26,30 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const [reset] = useForm();
 
-  return (   
-    
-    <div className="m-auto p-5" >
+  return (    
+    <Formik
+      initialValues={{
+        cc_user: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        city: "",
+        age: "",
+        password: "",
+        confirmPassword: "",
+      }}
+      validationSchema={SignupSchema}
+      onSubmit={(values, { setSubmitting }) => {
+        setSubmitting(false);
+        dispatch(
+          startSignUpEmailPassword(values.cc_user, values.first_name, values.last_name, values.email, values.city, values.age, values.password)
+          );
+          reset();
+        }}
+      >
+        {({ isValid }) => (
+   
+        <div className="m-auto p-5" >
         <div
           className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
           <div className="card p-5">
@@ -39,24 +60,6 @@ const SignUp = () => {
             />
             </div>
             <div className="card-body w-100"></div>
-    <Formik
-      initialValues={{
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      }}
-      validationSchema={SignupSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        setSubmitting(false);
-        dispatch(
-          startSignUpEmailPassword(values.email, values.password, values.name)
-        );
-        reset();
-      }}
-    >
-      {({ isValid }) => (
-        
         <Form>
         <Field className="rounded-end form-control my-3" type="text" name="cc_user" placeholder="Documento de identificación" />
           <ErrorMessage name="cc_user" component="span" className="error" />
@@ -90,7 +93,7 @@ const SignUp = () => {
             className="error"
           />
           <div className="mt-5 text-center">
-          <button className="btn bg-success text-white me-2" type="submit" disabled={!isValid}>
+          <button className="btn bg-success text-white me-2" type="submit"disabled={!isValid}>
             Registrarse
           </button>
           <hr/>
@@ -99,14 +102,11 @@ const SignUp = () => {
           </Link>
           </div>
         </Form>
-        )}
-        </Formik>
         </div>
             </div>
           </div>
-      
-    
-    
+        )}
+        </Formik> 
   );
 };
 

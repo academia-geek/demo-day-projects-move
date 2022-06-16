@@ -6,7 +6,7 @@ const Booking = () => {
     <div><h2>Reserva </h2>
     <div className="input-group form-group mt-3">
       <div className="p-2 bg-success text-white rounded-start w-25">
-        <span>Sede de Entrega</span>
+        <span>Zona de Entrega</span>
       </div>
       <NavDropdown
         className="border w-75 m-auto"
@@ -20,7 +20,7 @@ const Booking = () => {
     </div>
     <div className="input-group form-group mt-3">
       <div className="p-2 bg-success text-white rounded-start w-25">
-        <span>Sede de Devolución</span>
+        <span>Zona de Devolución</span>
       </div>
       <NavDropdown
         className="border w-75 m-auto"
