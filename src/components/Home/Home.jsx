@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <Container fluit className="d-flex p-5">
+      <Container  className="d-flex p-5">
         <Carousel>
           <Carousel.Item >
             <div className="d-flex text-center mt-5 ">
