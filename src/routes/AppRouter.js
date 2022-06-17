@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, onIdTokenChanged } from "firebase/auth";
+import { getAuth, onIdTokenChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -37,12 +37,19 @@ const AppRouter = () => {
     onIdTokenChanged(auth, (user) => {
       if (user?.uid) {
         setIsLoggedIn(true);
-        localStorage.setItem("auth", "true");
+        // Pasar token al backend
+        const info = {
+          email: user.email,
+          uid: user.uid,
+          token: user.accessToken,
+          refreshToken: user.refreshToken,
+        };
+        localStorage.setItem("user", JSON.stringify(info));
 
         //traer el token
         user.getIdToken().then((token) => {
           setToken(token);
-          localStorage.setItem("token", token);
+          // localStorage.setItem("Authorization", token);
         });
       } else {
         setIsLoggedIn(false);
@@ -92,7 +99,7 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
-              <NavbarPriv/>
+              <NavbarPriv />
               <HomePrivate />
               <Footer />
             </PrivateRoutes>
@@ -103,7 +110,7 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
-              <NavbarPriv/>
+              <NavbarPriv />
               <Vehicles />
               <Footer />
             </PrivateRoutes>
@@ -159,13 +166,13 @@ const AppRouter = () => {
           element={
             <PrivateRoutes isAuth={isLoggedIn}>
               <Sidebar />
-              <NavbarPriv/>
+              <NavbarPriv />
               <Profile />
               <Footer />
             </PrivateRoutes>
           }
         />
-       
+
         <Route
           path="/detail/:id"
           element={

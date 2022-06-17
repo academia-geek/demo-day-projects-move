@@ -4,11 +4,11 @@ import {
   createUserWithEmailAndPassword,
   deleteUser,
   getAuth,
-  reauthenticateWithPopup,
+  // reauthenticateWithPopup,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updatePassword,
+  // updatePassword,
   updateProfile,
 } from "firebase/auth";
 import Swal from "sweetalert2";
@@ -45,10 +45,6 @@ export const startGoogleLogin = () => {
     signInWithPopup(auth, google)
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
-        // function reauthWithGoogle() {
-        //   return reauthenticateWithPopup(auth, google);
-        // }
-        // updatePassword(user, "new password").catch((e) => reauthWithGoogle());
         Swal.fire(
           "Bien Hecho!",
           "Inicio de sesión con google exitoso",
@@ -69,10 +65,6 @@ export const startFacebookLogin = () => {
     signInWithPopup(auth, facebook)
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
-        // function reauthWithFacebook() {
-        //   return reauthenticateWithPopup(auth, facebook);
-        // }
-        // updatePassword(user, "new password").catch((e) => reauthWithFacebook());
         Swal.fire(
           "Bien Hecho!",
           "Inicio de sesión con facebook exitoso",
@@ -125,12 +117,12 @@ export const startLogout = () => {
       })
       .catch((error) => {
         console.log(error);
-        // Swal.fire("Oops...", "Ha ocurrido un error", "error");
       });
     signOut(auth)
       .then(() => {
         Swal.fire("Bien Hecho!", "Adios", "success");
         dispatch(logout());
+        localStorage.clear();
       })
       .catch((error) => {
         console.log(error);
