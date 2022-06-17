@@ -20,7 +20,6 @@ const Profile = () => {
         cc_user: formValues.cc_user,
         first_name: formValues.first_name,
         last_name: formValues.last_name,
-        email: formValues.email,
         city: formValues.city,
         address: formValues.address,
         age: formValues.age,
@@ -71,13 +70,6 @@ const Profile = () => {
               type="text"
               name="last_name"
               placeholder="Apellidos"
-              onChange={handleChange}
-            />
-            <input
-              className="rounded-end form-control my-3"
-              type="email"
-              name="email"
-              placeholder="Email"
               onChange={handleChange}
             />
             <input
