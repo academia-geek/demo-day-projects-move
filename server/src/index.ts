@@ -11,6 +11,7 @@ import swaggerJsdoc from "swagger-jsdoc";
 import { decodeToken } from "./firebase/admin.token";
 import { adminRouter } from "./routes/admin.routes";
 import { lenderRouter } from "./routes/lender.routes";
+import { connectMongo } from "./utilities/connect";
 
 const app = express();
 dotenv.config();
@@ -67,7 +68,7 @@ app.get('/', (req, res) => {
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsdoc(swaggerSpec)))
 
-connectDatabase()
+// connectDatabase()
 // .then(() => {
 
 // }).catch((error: Error) => {
@@ -76,7 +77,7 @@ connectDatabase()
 // })
 
 app.use(morgan("dev"));
-app.use("/vehicles", vehicleRouter)
+app.use("/vehicles", connectMongo, vehicleRouter)
 app.use("/auth", authRouter)
 app.use("/admin", adminRouter)
 app.use("/lender", lenderRouter)
