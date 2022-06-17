@@ -33,8 +33,10 @@ const Profile = () => {
     })
       .then((response) => {
         console.log(response);
-        if (response.ok) {
+        if (response.status === 201) {
           Swal.fire("Bien Hecho!", "Registro exitoso", "success");
+        } else {
+          Swal.fire("Oops...", "Ha ocurrido un error", "error");
         }
       })
       .catch((error) => {

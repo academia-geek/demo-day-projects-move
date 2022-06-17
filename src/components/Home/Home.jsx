@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Button, Carousel, Col, Container, Dropdown, DropdownButton, NavDropdown, Row } from "react-bootstrap";
+import { Button, Carousel, Col, Container, Dropdown, DropdownButton,  Row } from "react-bootstrap";
 import Booking from "../Booking";
 import Footer from "../Footer";
 import NavBar from "../Navbar";
@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <Container fluit="true" className="d-flex p-5">
+      <Container  className="d-flex p-5">
         <Carousel>
           <Carousel.Item>
             <div className="d-flex text-center mt-5 ">
@@ -106,14 +106,7 @@ const Home = () => {
 
       <Container className="p-5 text-center" id="quienes-somos">
         <h2>¿Quiénes Somos?</h2>
-        <p className="p-5">
-          Somos una empresa que se dedica a ofrecer soluciones que logren
-          atender necesidades de movilidad en Colombia a través de una
-          plataforma tecnológica para gestionar reservaciones en el Alquiler de
-          Vehículos con o sin conductor, con una gran variedad, para todas las
-          necesidades, nos destacamos por nuestro buen servicio, rápido y
-          confiable, así como por la claridad en nuestras tarifas y políticas.
-        </p>
+        <p className="p-5">Somos una empresa que se dedica a la conexion entre personas con el fin de atender necesidades de movilidad en Colombia a través de una plataforma tecnológica para gestionar reservaciones en el Alquiler de Vehículos de persona a persona con o sin conductor, con una gran variedad, para todas las necesidades, nos destacamos por nuestro buen servicio, rápido y confiable, así como por la claridad en nuestras tarifas y políticas.</p>
       </Container>
 
       <Container className="m-auto p-5 text-center border d-flex flex-column ">
