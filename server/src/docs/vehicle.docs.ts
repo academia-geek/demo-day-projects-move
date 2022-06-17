@@ -231,6 +231,23 @@
  *      responses:
  *          200:
  *              description: Lista los vehiculos por fecha
- *          
+ *     
+ * @swagger
+ * /vehicles/filter/{gama}:
+ *  get:
+ *      summary: Trae los vehiculos por gama
+ *      tags: [vehicles]
+ *      parameters:
+ *          - in: path
+ *            name: gama
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: Gama del vehiculo 
+ *      responses:
+ *          200:
+ *              description: Lista los vehiculos por gama
+ *          500:
+ *              description: internal server error      
  *              
  */

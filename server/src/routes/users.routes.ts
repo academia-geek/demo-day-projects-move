@@ -51,6 +51,8 @@ authRouter.get('/users', tokenAdmin, async (req: Request, res: Response) => {
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
+    } finally {
+        cliente.release();
     }
 })
 
@@ -81,15 +83,19 @@ authRouter.post('/users', decodeToken, validator.body(userSchema), async (req: R
                     )
                     return res.status(201).send({ message: "Usuario creado" });
                 } else {
+                    console.log("error al crear usuario");
                     return res.status(500).send({ message: "Error al crear el usuario" });
                 }
             } else {
+                console.log("El usuario ya existe");
                 return res.status(500).send({ message: "El usuario ya existe" });
             }
         } else {
+            console.log("Error al obtener el uid")
             return res.status(500).json({ message: "Error al obtener el uid" });
         }
     } catch (error) {
+        console.log(error);
         if (error.constraint === "users_pkey") {
             return res.status(400).send({ message: "cc_user, ya esta registrada" });
         } else {
@@ -152,6 +158,8 @@ authRouter.get('/activation-email/:code', async (req: Request, res: Response) =>
         }
     } catch (error) {
         res.status(500).send(error.message);
+    } finally {
+        cliente.release(true);
     }
 })
 
