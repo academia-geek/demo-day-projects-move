@@ -2,7 +2,7 @@ import Joi from 'joi'
 
 const vehicleSchema = Joi.object({
     cc_owner: Joi.string().min(10).required(),
-    placa: Joi.string(),
+    placa: Joi.string().required(),
     url_image: Joi.array(),
     modelo: Joi.number(),
     marca: Joi.string(),
