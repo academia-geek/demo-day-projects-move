@@ -36,8 +36,9 @@ const Vehicles = () => {
     })
       .then((response) => {
         console.log(response);
-        if (response.status === 201) {
+        if (response.ok) {
           Swal.fire("Bien Hecho!", "Eliminado exitoso", "success");
+          getData()
         } else {
           Swal.fire("Oops...", "Ha ocurrido un error", "error");
         }
@@ -47,6 +48,10 @@ const Vehicles = () => {
         Swal.fire("Oops...", "Ha ocurrido un error", "error");
       });
   };
+
+  const handleUpdate = (car) => {
+    console.log("editar", car)
+  }
 
   return (
     <>
@@ -68,7 +73,7 @@ const Vehicles = () => {
                   <Card.Text>${car.price}</Card.Text>
                   <Card.Text>{car.placa}</Card.Text>
                 </div>
-                <div className="">
+                <div className="d-flex justify-content-evenly">
                   <Button
                     className="mt-2 m-2"
                     variant="success"
@@ -80,11 +85,14 @@ const Vehicles = () => {
                   <Button
                     className="mt-2 m-2 btn btn-danger"
                     onClick={() => handleDelete(car)}
-                    id={car.placa}
                   >
                     🗑
                   </Button>
-                  <Button type="button" className="mt-2 m-2 btn btn-primary">
+                  <Button
+                    type="button"
+                    className="mt-2 m-2 btn btn-primary"
+                    onClick={() => handleUpdate(car)}
+                  >
                     💾
                   </Button>
                 </div>
