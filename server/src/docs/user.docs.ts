@@ -121,7 +121,7 @@
  * @swagger
  * /auth/users/lender:
  *  post:
- *      summary: Para postularse a ser prestador 
+ *      summary: Como usuario puedo postularme como prestador
  *      tags: [lender]
  *      security:
  *          - BearerAuth: []
