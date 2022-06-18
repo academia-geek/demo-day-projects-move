@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-// import ReactHTMLDatalist from "react-html-datalist";
+import ReactHTMLDatalist from "react-html-datalist";
 import Swal from "sweetalert2";
 
 const HomeP = () => {
@@ -14,23 +14,22 @@ const HomeP = () => {
 
   const handleLenderSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
     const user = JSON.parse(localStorage.getItem("user")) || "";
     axios({
       method: "POST",
       url: "http://35.211.155.160:5000/vehicles",
       data: {
-        cc_owner: "1017240334",
-        placa: "INN349",
+        cc_owner: formValues.cc_owner,
+        placa: formValues.placa,
         url_image: [
           {
-            url: "https://www.elcarrocolombiano.com/wp-content/uploads/2019/01/20190122-MPM-ERELIS-AUTO-DEPORTIVO-MAS-BARATO-01.jpg",
+            url: formValues.url_image,
           },
         ],
-        modelo: 2022,
-        marca: "Eleris",
-        color: "Color",
-        linea: "Deportivo",
+        modelo: formValues.modelo,
+        marca: formValues.marca,
+        color: formValues.color,
+        linea: formValues.linea,
         fecha_disponibilidad: "",
         url_soat: "",
         url_tecnicomecanica: "",
@@ -46,7 +45,7 @@ const HomeP = () => {
         tipo_combustible: "",
         valor_combustible: "",
         zone: "",
-        price: 100000,
+        price: formValues.price,
       },
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -54,7 +53,6 @@ const HomeP = () => {
       },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           Swal.fire("Bien Hecho!", "Registro exitoso", "success");
         } else {
@@ -62,10 +60,9 @@ const HomeP = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
-        Swal.fire("Oops...", "Ha ocurrido un error", "error");
+        Swal.fire("Oops...", "Ha ocurrido un error", "error" + error);
       });
-    // form.current.reset();
+    form.current.reset();
   };
   return (
     <div style={{ marginLeft: "120px" }}>
@@ -124,49 +121,19 @@ const HomeP = () => {
               placeholder="Linea"
               onChange={handleChange}
             />
-            {/* <small>Estado del vehículo</small>
+            <small>Estado del vehículo </small> <br />
             <ReactHTMLDatalist
-              name="activo"
-              onChange={handleChange}
-              options={[
-                { text: "Activo", value: true },
-                { text: "Inactivo", value: false },
-              ]}
-            />
-            <hr /> */}
-            <input
-              className="rounded-end form-control my-3"
-              type="text"
+            id="gama"
               name="gama"
-              placeholder="Gama"
-              onChange={handleChange}
-            />
-            {/* <input
-              className="rounded-end form-control my-3"
-              type="text"
-              name="poliza"
-              placeholder="Póliza"
-              onChange={handleChange}
-            /> */}
-            {/* <input
-              className="rounded-end form-control my-3"
-              type="text"
-              name="tipo_combustible"
-              placeholder="Tipo combustible"
-              onChange={handleChange}
-            /> */}
-            {/* <small>Zona</small>
-            <ReactHTMLDatalist
-              name="zone"
               onChange={handleChange}
               options={[
-                { text: "Pereira", value: "Pereira" },
-                { text: "Medellin", value: "Medellin" },
-                { text: "Cali", value: "Cali" },
-                { text: "Manizales", value: "Manizales" },
+                { text: "Alta", value: "Alta" },
+                { text: "Media", value: "Media" },
+                { text: "Baja", value: "Baja" },
+                { text: "Electricos", value: "Electricos" },
               ]}
             />
-            <hr /> */}
+            <hr />
             <input
               className="rounded-end form-control my-3"
               type="number"
@@ -174,7 +141,6 @@ const HomeP = () => {
               placeholder="Precio"
               onChange={handleChange}
             />
-
             <div className="mt-5 text-center">
               <button className="btn bg-success text-white me-2" type="submit">
                 Agregar Vehículo

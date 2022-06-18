@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import ReactHTMLDatalist from 'react-html-datalist';
+import Swal from 'sweetalert2';
 
 const RegisterPrest = () => {
   const [formValues, setFormValues] = useState();
@@ -18,10 +19,6 @@ const RegisterPrest = () => {
       body: JSON.stringify({
         cc_user_fk: formValues.cc_user,
         conductor: formValues.conductor,
-        active_lender: formValues.active_lender,
-        balance_lender: formValues.balance_lender,
-        total_loans: formValues.total_loans,
-        commissions: formValues.commissions
       }),
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -30,10 +27,14 @@ const RegisterPrest = () => {
       method: "POST",
     })
       .then((response) => {
-        console.log(response)
+        if (response.status === 200) {
+          Swal.fire("Bien Hecho!", "Registro exitoso", "success");
+        } else {
+          Swal.fire("Oops...", "Ha ocurrido un error", "error");
+        }
       })
       .catch((error) => {
-        console.log(error);
+        Swal.fire("Oops...", "Ha ocurrido un error", "error" + error);
       });
     form.current.reset();
   };
@@ -52,45 +53,14 @@ const RegisterPrest = () => {
               placeholder="Tu CC de Identidad"
               onChange={handleChange}
             />
-            <small>¿Es conductor? </small>
+            <small>¿Quieres ser conductor? </small>
             <ReactHTMLDatalist
               name="conductor"
               onChange={handleChange}
               options={[
-                { text: "Si", value: true },
-                { text: "No", value: false },
+                { text: "Si", value: "si" },
+                { text: "No", value: "no" },
               ]}
-            />
-            <hr />
-            <small>¿Es un prestador activo? </small>
-            <ReactHTMLDatalist
-              name="active_lender"
-              onChange={handleChange}
-              options={[
-                { text: "Si", value: true },
-                { text: "No", value: false },
-              ]}
-            />
-            <input
-              className="rounded-end form-control my-3"
-              type="number"
-              name="balance_lender"
-              placeholder="Balance del Prestador"
-              onChange={handleChange}
-            />
-            <input
-              className="rounded-end form-control my-3"
-              type="number"
-              name="total_loans"
-              placeholder="Prestamos totales"
-              onChange={handleChange}
-            />
-            <input
-              className="rounded-end form-control my-3"
-              type="number"
-              name="commissions"
-              placeholder="Comision"
-              onChange={handleChange}
             />
             <div className="mt-5 text-center">
               <button className="btn bg-success text-white me-2" type="submit">
