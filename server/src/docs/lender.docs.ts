@@ -51,20 +51,6 @@
  *          example:
  *              price: 20000
  * @swagger
- * /auth/users/lender/:
- *  post:
- *      summary: Solicitar ser prestador
- *      tags: [lenders]
- *      security:
- *          - BearerAuth: []   
- *      requestBody:
- *          required: true      
- *          content:
- *              application/json:
- *                  schema:
- *                      type: object
- *                      $ref: '#/components/schemas/lender'
- * @swagger
  * /lender/{cc_user}:
  *  put:
  *      summary: Ingresar el valor del vehiculo

@@ -14,6 +14,9 @@
  *              url_image:
  *                  type: array
  *                  description: array de imagenes del vehiculo montadas por el usuario
+ *              marca:
+ *                  type: string
+ *                  description: modelo del vehiculo
  *              modelo:
  *                  type: number
  *                  description: modelo del vehiculo
@@ -36,7 +39,7 @@
  *                  type: boolean
  *                  description: estado del vehiculo en la plataforma
  *              gama:
- *                  type: array
+ *                  type: string
  *                  description: Vehiculo es de gama [alta, media, baja]
  *              comision_renta:
  *                  type: decimal
@@ -57,27 +60,10 @@
  *                  type: array
  *                  description: Sede de los vehiculos estan en las zonas [Pereira, Medellin, Cali, Manizales] 
  *              price:
- *                  type: boolean
+ *                  type: number
  *                  description: el usuario puede ingresar el valor que tiene su vehiculo
  *          required:
  *              - cc_owner
- *              - placa
- *              - url_image
- *              - modelo
- *              - color
- *              - fecha_disponibilidad
- *              - url_soat
- *              - url_tecnicomecanica
- *              - url_ficha_tecnica
- *              - activo
- *              - gama
- *              - comision_renta
- *              - poliza
- *              - tipo_vehiculo
- *              - tipo_combustible
- *              - valor_combustible
- *              - zone
- *              - price
  *          example:
  *              cc_owner: "1005206688"
  *              placa: "ABC123"
@@ -231,6 +217,23 @@
  *      responses:
  *          200:
  *              description: Lista los vehiculos por fecha
- *          
+ *     
+ * @swagger
+ * /vehicles/filter/{gama}:
+ *  get:
+ *      summary: Trae los vehiculos por gama
+ *      tags: [vehicles]
+ *      parameters:
+ *          - in: path
+ *            name: gama
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: Gama del vehiculo 
+ *      responses:
+ *          200:
+ *              description: Lista los vehiculos por gama
+ *          500:
+ *              description: internal server error      
  *              
  */

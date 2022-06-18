@@ -30,12 +30,14 @@ adminRouter.get('/lender', tokenAdmin, async (req: Request, res: Response) => {
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
+    } finally {
+        cliente.release(true);
     }
 })
 
 
 // Puedo ver los usuarios registrados como conductor de su vehiculo o los que ofrecieron solo su vehiculo
-adminRouter.get('/info-lender', tokenAdmin, async (req: Request, res: Response) => {
+adminRouter.get('/info-lender', async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
         const result = await cliente.query(`SELECT * FROM service a
@@ -45,6 +47,8 @@ adminRouter.get('/info-lender', tokenAdmin, async (req: Request, res: Response) 
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
+    } finally {
+        cliente.release(true);
     }
 })
 
@@ -145,5 +149,22 @@ adminRouter.put('/taker/:cc_user', tokenAdmin, async (req: Request, res: Respons
         res.status(500).send(error.message);
     } finally {
         cliente.release(true);
+    }
+})
+
+// Yo como administrador puedo activar un prestador cuando este solicito serlo
+adminRouter.put('/lender/:cc_user', tokenAdmin, async (req: Request, res: Response) => {
+    const { cc_user } = req.params;
+    let cliente = await pool.connect();
+    try {
+        const query = await cliente.query(`UPDATE lender SET active_lender = $1 WHERE cc_user = $2`, [true, cc_user]);
+        if (query.rowCount > 0) {
+            return res.status(200).send({ message: 'El usuario cambio su estatus a activo' });
+        } else {
+            return res.status(200).send({ message: 'No se encontro el usuario' });
+        }
+    } catch (error) {
+        console.warn();
+        
     }
 })

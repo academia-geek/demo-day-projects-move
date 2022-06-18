@@ -51,6 +51,8 @@ authRouter.get('/users', tokenAdmin, async (req: Request, res: Response) => {
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
+    } finally {
+        cliente.release(true);
     }
 })
 
@@ -77,19 +79,24 @@ authRouter.post('/users', decodeToken, validator.body(userSchema), async (req: R
                         params.user,
                         params.subject,
                         params.first_name,
+                        false,
                         params.code
                     )
                     return res.status(201).send({ message: "Usuario creado" });
                 } else {
+                    console.log("error al crear usuario");
                     return res.status(500).send({ message: "Error al crear el usuario" });
                 }
             } else {
+                console.log("El usuario ya existe");
                 return res.status(500).send({ message: "El usuario ya existe" });
             }
         } else {
+            console.log("Error al obtener el uid")
             return res.status(500).json({ message: "Error al obtener el uid" });
         }
     } catch (error) {
+        console.log(error);
         if (error.constraint === "users_pkey") {
             return res.status(400).send({ message: "cc_user, ya esta registrada" });
         } else {
@@ -101,16 +108,59 @@ authRouter.post('/users', decodeToken, validator.body(userSchema), async (req: R
     }
 })
 
-// Volver a un usuario administrador
-authRouter.put('/users/:id/:role', tokenAdmin, async (req: Request, res: Response) => {
+// Como administrador puedo cambiar el rol de cualquier usuario ingresando su cedula
+authRouter.put('/users/:cc_user/:role', tokenAdmin, async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
-        const { id } = req.params;
-        const { role } = req.params;
-        const result = await cliente.query('UPDATE users SET role = $1 WHERE cc_user = $2', [role, id]);
-        if (result.rowCount > 0) {
-            return res.status(200).send({ message: "Usuario actualizado" });
+        const { cc_user , role} = req.params;
+        switch (role) {
+            case 'usuario':
+                const resultUser = await cliente.query('UPDATE users SET role = $1 WHERE cc_user = $2', [role, cc_user]);
+                if (resultUser.rowCount > 0) {
+                    return res.status(200).send({ message: "Usuario actualizado" });
+                } else {}
+                break;
+            case 'prestador':
+                const resultPrestador = await cliente.query('UPDATE users SET role = $1 WHERE cc_user = $2', [role, cc_user]);
+                await cliente.query(`UPDATE lender SET active_lender = $1 WHERE cc_user_fk = $2`, [true, cc_user]);
+                const user1 = await cliente.query('SELECT * FROM users WHERE cc_user = $1', [cc_user]);
+                if (resultPrestador.rowCount > 0) {
+                    await sendEmail(
+                        [user1.rows[0].email], // email del usuario
+                        user1.rows[0].first_name,
+                        'Bienvenido Prestador a MovE',
+                        true,
+                        '0000',
+                        `Bienvenido como prestador de nuestra plataforma MovE`
+                    )
+                    return res.status(200).send({ message: "Usuario actualizado" });
+                } else {}
+                break
+            case 'tomador':
+                const resultTomador = await cliente.query('UPDATE users SET role = $1 WHERE cc_user = $2', [role, cc_user]);
+                const user2 = await cliente.query('SELECT * FROM users WHERE cc_user = $1', [cc_user]);
+                if (resultTomador.rowCount > 0) {
+                    await sendEmail(
+                        [user2.rows[0].email], // email del usuario
+                        user2.rows[0].first_name,
+                        'Bienvenido a MovE',
+                        true,
+                        '0000',
+                        `Bienvenido a nuestra plataforma MovE, donde encontraras todos los servicios que necesitas`
+                    )
+                    return res.status(200).send({ message: "Usuario actualizado" });
+                } else {}
+                break
+            case 'admin':
+                const resultAdmin = await cliente.query('UPDATE users SET role = $1 WHERE cc_user = $2', [role, cc_user]);
+                if (resultAdmin.rowCount > 0) {
+                    return res.status(200).send({ message: "Usuario actualizado" });
+                } else {}
+                break
+            default:
+                break;
         }
+        
     } catch (error) {
         console.log(error);
         return res.status(500).send({ message: "Internal Server Error" });
@@ -119,17 +169,39 @@ authRouter.put('/users/:id/:role', tokenAdmin, async (req: Request, res: Respons
     }
 })
 
-// Para postularse a ser prestador 
+// Para postularse a ser prestador (Este debe ser lo primero que le pregunte al usuario que si quiere volver prestador) // OJO
 authRouter.post('/users/lender', decodeToken, validator.body(lenderSchema), async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
         const { cc_user_fk, conductor } = req.body;
-        const result = await cliente.query('INSERT INTO lender (cc_user_fk, conductor) VALUES ($1, $2)', [cc_user_fk, conductor]);
-        if (result.rowCount > 0) {
-            return res.status(201).json({ message: "Lender created" });
-        } else {
-            return res.status(500).json({ message: "Error creating lender" });
+        const params = {
+            user: ['cuentacorreomove@gmail.com'],
+            subject: 'Activar usuario como prestador',
         }
+        switch (conductor) {
+            case 'si':
+                const result = await cliente.query('INSERT INTO lender (cc_user_fk, conductor) VALUES ($1, $2)', [cc_user_fk, conductor]);
+                await sendEmail(
+                    params.user,
+                    params.subject,
+                    'Administrador',
+                    true,
+                    '0000',
+                    `Activar usuario como prestador con cedula ${cc_user_fk}`
+                )
+                if (result.rowCount > 0) {
+                    return res.status(201).json({ message: "postulacion correcta, el administrador se pondra en contacto con usted" });
+                } else {
+                    return res.status(500).json({ message: "Error creating lender" });
+                }
+                break;
+            case 'no':
+                await cliente.query('INSERT INTO lender (cc_user_fk, conductor) VALUES ($1, $2)', [cc_user_fk, conductor]);
+                break;
+            default:
+                break;
+        }
+
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: "Internal Server Error" });
@@ -152,6 +224,8 @@ authRouter.get('/activation-email/:code', async (req: Request, res: Response) =>
         }
     } catch (error) {
         res.status(500).send(error.message);
+    } finally {
+        cliente.release(true);
     }
 })
 

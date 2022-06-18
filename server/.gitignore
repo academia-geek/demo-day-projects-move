@@ -14,3 +14,7 @@ dist
 src/firebase/serviceAccountKey.json
 src/firebase/.firebase
 src/utilities/key.json
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
