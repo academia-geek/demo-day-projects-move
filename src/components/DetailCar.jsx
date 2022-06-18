@@ -7,7 +7,9 @@ const DetailCar = () => {
   useEffect(() => {
     const detailCar = [JSON.parse(localStorage.getItem('detailCar'))];
     setDetail(detailCar);
+     console.log(detailCar);
   }, [])
+ 
   return (
     <>
         <div style={{ marginLeft: '250px' }}>

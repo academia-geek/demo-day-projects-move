@@ -38,7 +38,7 @@ const Vehicles = () => {
         console.log(response);
         if (response.ok) {
           Swal.fire("Bien Hecho!", "Eliminado exitoso", "success");
-          getData()
+          getData(urlv);
         } else {
           Swal.fire("Oops...", "Ha ocurrido un error", "error");
         }
