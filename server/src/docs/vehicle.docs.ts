@@ -14,6 +14,9 @@
  *              url_image:
  *                  type: array
  *                  description: array de imagenes del vehiculo montadas por el usuario
+ *              marca:
+ *                  type: string
+ *                  description: modelo del vehiculo
  *              modelo:
  *                  type: number
  *                  description: modelo del vehiculo
@@ -36,7 +39,7 @@
  *                  type: boolean
  *                  description: estado del vehiculo en la plataforma
  *              gama:
- *                  type: array
+ *                  type: string
  *                  description: Vehiculo es de gama [alta, media, baja]
  *              comision_renta:
  *                  type: decimal
