@@ -57,27 +57,10 @@
  *                  type: array
  *                  description: Sede de los vehiculos estan en las zonas [Pereira, Medellin, Cali, Manizales] 
  *              price:
- *                  type: boolean
+ *                  type: number
  *                  description: el usuario puede ingresar el valor que tiene su vehiculo
  *          required:
  *              - cc_owner
- *              - placa
- *              - url_image
- *              - modelo
- *              - color
- *              - fecha_disponibilidad
- *              - url_soat
- *              - url_tecnicomecanica
- *              - url_ficha_tecnica
- *              - activo
- *              - gama
- *              - comision_renta
- *              - poliza
- *              - tipo_vehiculo
- *              - tipo_combustible
- *              - valor_combustible
- *              - zone
- *              - price
  *          example:
  *              cc_owner: "1005206688"
  *              placa: "ABC123"
