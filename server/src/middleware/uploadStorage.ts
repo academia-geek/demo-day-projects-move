@@ -8,4 +8,4 @@ let process = multer({
     limits: { fileSize: maxSizeFileSize }
 }).single("file");
 
-export const processFileMiddleware = util.promisify(process);
+export default  util.promisify(process);

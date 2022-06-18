@@ -75,7 +75,7 @@
  * @swagger
  * /auth/users/{cc_user}/{role}:
  *  put:
- *      summary: Volver administrador un usuario
+ *      summary: Como administrador puedo cambiar el rol de cualquier usuario ingresando su cedula
  *      tags: [user]
  *      security:
  *          - BearerAuth: []
@@ -86,10 +86,10 @@
  *            name: role
  *            schema:
  *              type: string
- *              enum: [admin, usuario]
+ *              enum: [admin, usuario, prestador, tomador]
  *      responses:
  *          200:
- *              description: usuario ascendido
+ *              description: rol del usuario cambiado
  *          401:
  *              description: Unauthorized
  * 
@@ -121,7 +121,7 @@
  * @swagger
  * /auth/users/lender:
  *  post:
- *      summary: Para postularse a ser prestador 
+ *      summary: Como usuario puedo postularme como prestador
  *      tags: [lender]
  *      security:
  *          - BearerAuth: []
