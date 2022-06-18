@@ -43,6 +43,22 @@ vehicleRouter.get("/filter/:gama", async (req: Request, res: Response) => {
     }
 })
 
+// Servicio que obtiene los vehiculos por la gama
+vehicleRouter.get("/type-filter/:tipo_vehiculo", async (req: Request, res: Response) => {
+    try {
+        const { tipo_vehiculo } = req.params;
+        const vehicles = await collectionVehicles.vehicles.find({ tipo_vehiculo: tipo_vehiculo }).toArray();
+        if (vehicles) {
+            res.json(vehicles).status(200);
+        } else {
+            res.status(404).json({ message: "vehicle not found" });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+})
+
 vehicleRouter.get("/:id", async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
