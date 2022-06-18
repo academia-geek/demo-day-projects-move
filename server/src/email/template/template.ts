@@ -523,7 +523,7 @@ export const templateEmailValidation = (name: string, code: string) => {
                                               text-decoration: none;
                                               text-align: center;
                                             "
-                                            href="http://localhost:5000/auth/activation-email/${code}"
+                                            href="http://35.211.155.160:5000/auth/activation-email/${code}"
                                           >
                                             <button
                                               style="
