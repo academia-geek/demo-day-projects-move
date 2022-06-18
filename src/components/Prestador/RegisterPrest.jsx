@@ -46,7 +46,7 @@ const RegisterPrest = () => {
     <div style={{ marginLeft: "120px" }}>
       <h1 className="text-center p-3">Solicitar ser Prestador</h1>
       <div className=" d-flex flex-column min-vh-100 justify-content-center align-items-center">
-        <div className="card p-5 m-5">
+        <div className="card p-5">
           <div className="card-body w-100"></div>
           <form onSubmit={handleLenderSubmit} ref={form}>
             <input

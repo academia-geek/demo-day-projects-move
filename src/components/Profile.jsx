@@ -33,7 +33,11 @@ const Profile = () => {
       .then((response) => {
         console.log(response);
         if (response.status === 201) {
-          Swal.fire("Bien Hecho!", "Registro exitoso", "success");
+          Swal.fire(
+            "Bien Hecho!",
+            "Datos guardados correctamente, revisa tu correo electronico",
+            "success"
+          );
         } else {
           Swal.fire("Oops...", "Ha ocurrido un error", "error");
         }
@@ -50,7 +54,7 @@ const Profile = () => {
       <div className=" d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div className="card p-5 m-5">
           <form onSubmit={handleLenderSubmit} ref={form}>
-            <h1 className="text-center p-3">Perfil de Usuario</h1>
+            <h1 className="text-center p-3">Termina tu registro</h1>
             <input
               className="rounded-end form-control my-3"
               type="text"

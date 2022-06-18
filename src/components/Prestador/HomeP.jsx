@@ -33,12 +33,12 @@ const HomeP = () => {
         fecha_disponibilidad: "",
         url_soat: "",
         url_tecnicomecanica: "",
-        tipo_vehiculo: "",
+        tipo_vehiculo: formValues.tipo_vehiculo,
         url_ficha_tecnica: "",
         estado: "",
         activo: false,
         tipo: "",
-        gama: "",
+        gama: formValues.gama,
         comision_renta: 0,
         poliza: false,
         limpieza: "",
@@ -65,9 +65,9 @@ const HomeP = () => {
     form.current.reset();
   };
   return (
-    <div style={{ marginLeft: "120px" }}>
+    <div style={{ marginLeft: "120px" }} className="text-center">
       <h1 className="text-center p-3">Bienvenido Prestador</h1>
-
+      <p>Registra tu vehículo</p>
       <div className=" d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div className="card p-5 m-5">
           <div className="card-body w-100"></div>
@@ -121,16 +121,26 @@ const HomeP = () => {
               placeholder="Linea"
               onChange={handleChange}
             />
-            <small>Estado del vehículo </small> <br />
+            <small>Gama del vehículo </small> <br />
             <ReactHTMLDatalist
-            id="gama"
+              id="gama"
               name="gama"
               onChange={handleChange}
               options={[
-                { text: "Alta", value: "Alta" },
-                { text: "Media", value: "Media" },
-                { text: "Baja", value: "Baja" },
-                { text: "Electricos", value: "Electricos" },
+                { text: "Alta", value: "alta" },
+                { text: "Media", value: "media" },
+                { text: "Baja", value: "baja" },
+              ]}
+            />
+            <hr />
+            <small>Tipo del vehículo </small> <br />
+            <ReactHTMLDatalist
+              id="tipo_vehiculo"
+              name="tipo_vehiculo"
+              onChange={handleChange}
+              options={[
+                { text: "Combustión", value: "combustion" },
+                { text: "Electricos", value: "electricos" },
               ]}
             />
             <hr />
