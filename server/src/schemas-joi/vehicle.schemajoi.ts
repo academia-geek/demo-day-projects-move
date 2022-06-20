@@ -8,7 +8,10 @@ const vehicleSchema = Joi.object({
     marca: Joi.string().allow(''),
     color: Joi.string().allow(''),
     linea: Joi.string().allow(''),
-    fecha_disponibilidad: Joi.string().allow(''),
+    fecha_disponibilidad: Joi.object().allow(''), /*"fecha_disponibilidad": {
+        "fecha_inicio": "2018-01-01",
+        "fecha_fin": "2018-12-31"
+    }, */
     url_soat: Joi.string().allow(''),
     url_tecnicomecanica: Joi.string().allow(''),
     tipo_vehiculo: Joi.string().allow(''),
@@ -22,7 +25,7 @@ const vehicleSchema = Joi.object({
     limpieza: Joi.string().allow(''),
     tipo_combustible: Joi.string().allow(''),
     valor_combustible: Joi.number().allow(''),
-    zone: Joi.string().allow(''),
+    zone: Joi.array().allow(''),
     price: Joi.number().allow('')
 })
 
