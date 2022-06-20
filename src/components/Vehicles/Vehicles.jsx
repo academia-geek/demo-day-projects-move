@@ -64,14 +64,19 @@ const Vehicles = () => {
               style={{ width: "18rem" }}
             >
               <Card.Img variant="top" src={car.url_image[0].url} />
-              <Card.Body className="justify-content-around">
-                <div>
+              <Card.Body>
+                <div className="text-center">
+                  <div className="d-flex justify-content-around">
                   <Card.Title>{car.marca}</Card.Title>
                   <Card.Title>{car.linea}</Card.Title>
-                  <Card.Text>{car.tipo_vehiculo}</Card.Text>
-                  <Card.Text>{car.gama}</Card.Text>
-                  <Card.Text>${car.price}</Card.Text>
-                  <Card.Text>{car.placa}</Card.Text>
+                  </div>
+                  <Card.Text >Disponibilidad desde: {car.fecha_disponibilidad.fecha_inicio} hasta: {car.fecha_disponibilidad.fecha_fin}</Card.Text>
+                  <div className="d-flex justify-content-around">
+                  <Card.Text>Gama: {car.gama}</Card.Text>
+                  <Card.Text>Placa: {car.placa}</Card.Text>
+                  </div>
+                  <Card.Title>Precio: ${car.price}</Card.Title>
+                  
                 </div>
                 <div className="d-flex justify-content-evenly">
                   <Button

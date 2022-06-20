@@ -17,7 +17,7 @@ const Economicos = () => {
   }, [])
   return (
     <>
-    <div className="bg-transparent" style={{marginLeft:'300px', height:'100vh', marginRight:'50px'}}>
+    <div className="bg-transparent" style={{marginLeft:'300px'}}>
       <div className="row m-3" >
     {
             carArray?.map((car, index) => (
