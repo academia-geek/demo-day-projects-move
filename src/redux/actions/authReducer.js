@@ -80,13 +80,13 @@ export const startFacebookLogin = () => {
 };
 
 // Sign up with email and password
-export const startSignUpEmailPassword = (cc_user, first_name, last_name, email, city, age, password) => {
+export const startSignUpEmailPassword = ( email, password) => {
   return (dispatch) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(async ({ user }) => {
-        await updateProfile(auth.currentUser, { displayName: first_name });
-        dispatch(signUp(cc_user, first_name, last_name, email, city, age, password));
+        await updateProfile(auth.currentUser, );
+        dispatch(signUp(user.email, user.password));
         Swal.fire("Bien Hecho!", "Registro exitoso", "success");
       })
       .catch((error) => {
@@ -96,11 +96,10 @@ export const startSignUpEmailPassword = (cc_user, first_name, last_name, email, 
   };
 };
 
-export const signUp = (uid, displayName, email, password) => ({
+export const signUp = (uid, email, password) => ({
   type: types.signup,
   payload: {
     uid,
-    displayName,
     email,
     password,
   },
