@@ -1,70 +1,93 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# MovE
 
-## Available Scripts
+Aplicación web enfocada en la renta de variedad de vehículos según la necesidad del usuario. Permite al usuario registrarse y alquilar un vehículo con o sin conductor, ya sea por horas o por días; así como también la opción para quien quiera registrarse como prestador y ofrecer su vehículos en renta.
 
-In the project directory, you can run:
 
-### `npm start`
+![Logo](https://res.cloudinary.com/dmaviub4l/image/upload/v1653989340/ihrda8sczta1nboafcdq.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Frontend Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ReactJS
+- Redux
+- Hooks
+- React-router
+- Formik y Yup
+- Bootstrap
+- Styled Components
+- Enrutamiento Dinamico
+- Protección de rutas
+- Axios
+- SweetAlert2
+- Consumo de API Rest creado por backend
+- Autenticación con Firebase
+- Login y Sign Up con servicios de Google y Facebook
 
-### `npm run build`
+## Backend Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Sendgrid
+- Firebase
+- Jest
+- Axios
+- Express
+- Joi
+- Swagger
+- Google Cloud
+- Mongo DB
+- Node
+- Typescript
+## Run Locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  git clone https://github.com/academia-geek/demo-day-projects-move
+```
 
-### `npm run eject`
+Go to the project directory
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  cd demo-day-projects-move
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Start the server
 
-## Learn More
+```bash
+  npm run start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Screenshots
 
-### Code Splitting
+![App Screenshot](https://res.cloudinary.com/karvaroz/image/upload/v1655748498/screenshot_iiom9s.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Frontend**
+- [@karvaroz](https://www.github.com/karvaroz)
+- [@Bethsyf](https://github.com/Bethsyf)
 
-### Making a Progressive Web App
+**Backend**
+- [@calypsobronte](https://github.com/calypsobronte)
+- [@luismariofg132](https://github.com/luismariofg132)
+- [@lauramunoz05](https://github.com/lauramunoz05)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Website
 
-### Advanced Configuration
+https://move-89a33.web.app/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[MIT](https://choosealicense.com/licenses/mit/)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
