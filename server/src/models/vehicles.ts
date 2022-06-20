@@ -27,6 +27,7 @@ export interface Vehicles {
     tipo_combustible: String
     valor_combustible: Int32
     zone: Array<string>; // String
+    price: Int32; // Int
 }
 
 

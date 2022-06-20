@@ -4,35 +4,36 @@ import { pool } from "../database/database.config";
 
 import { collectionVehicles } from "../services/database.service";
 
-import { tokenPrestador } from "../firebase/admin.token";
+import { decodeToken, uidToken } from "../firebase/admin.token";
 
 
 export const takerRouter = express.Router();
 takerRouter.use(express.json());
 
-// Como usuario prestador de servicios puedo registrar el precio del vehiculo
-takerRouter.put('/:cc_user', tokenPrestador, async (req: Request, res: Response) => {
+// Yo como usuario “Tomador” puedo rentar un vehículo por horas o días
+takerRouter.post('/rentar', decodeToken, async (req: Request, res: Response) => {
     let cliente = await pool.connect();
     try {
-        const { cc_user } = req.params;
-        const { price } = req.body;
-        const usersResult = await cliente.query('SELECT * FROM users WHERE cc_user = $1', [cc_user]);
-        if (usersResult.rowCount === 0) {
-            res.status(400).json({ message: "El usuario no esta registrado" });
-        } else {
-            // console.log(usersResult.rows.map(row => row.cc_user));
-
-            const [result] = usersResult.rows.map((row) => row.cc_user)
-            // console.log(result);
-
-            const vehicle = await collectionVehicles.vehicles.findOneAndUpdate({ cc_owner: result }, { $set: { price } });
-            // console.log(vehicle, price);
-            if (!vehicle) {
-                return res.status(400).json({ message: `No se pudo registrar el precio comunicarse con el Administrador` });
-            } else {
-
-                return res.status(200).json({ message: `El precio del vehiculo ha sido actualizado` });
-            }
+        let { typeRenta,  startDate, finishDate, placa} = req.body;
+        const { email } = await uidToken(req);
+        switch (typeRenta) {
+            case 'hora':
+                // 24
+                const vehicle = await collectionVehicles.vehicles.findOne({ placa: placa });
+                const user = await cliente.query('SELECT * FROM users WHERE email = $1', [email]);
+                const milisecondDiff = new Date(finishDate).getTime() - new Date(startDate).getTime();
+                const dayDiff = Math.round(milisecondDiff / (1000 * 3600 * 24));
+                const horaTotal = dayDiff * Number(vehicle.price);
+                return {horaTotal, user: user.rows[0], vehicle};
+                break;
+            case 'dia':
+                // 24
+                break;
+            case 'mes':
+                // 30
+                break;
+            default:
+                break;
         }
     } catch (error) {
         console.log(error);
