@@ -3,7 +3,7 @@ import Joi from 'joi'
 const vehicleSchema = Joi.object({
     cc_owner: Joi.string().min(10).required(),
     placa: Joi.string().required(),
-    url_image: Joi.string().allow(''),
+    url_image: Joi.array(),
     modelo: Joi.number().allow(''),
     marca: Joi.string().allow(''),
     color: Joi.string().allow(''),

@@ -59,9 +59,10 @@ export const CONFIG_POSTGRES = {
     user: process.env.DB_USER_POSTGRES,
     database: process.env.DATABASE_POSTGRES,
     password: process.env.DB_PASSWORD_POSTGRES,
-    max: 60,
+    connectionTimeoutMillis: 0,
+    idleTimeoutMillis: 0,
+    max: 120,
     port: 5432,
-    allowExitOnIdle: true
 }
 
 
