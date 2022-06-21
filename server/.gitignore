@@ -18,3 +18,7 @@ src/utilities/key.json
 # Coverage directory used by tools like istanbul
 coverage
 *.lcov
+
+certificate.pem
+privatekey.pem
+certrequest.csr

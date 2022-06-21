@@ -12,6 +12,7 @@ import { decodeToken } from "./firebase/admin.token";
 import { adminRouter } from "./routes/admin.routes";
 import { lenderRouter } from "./routes/lender.routes";
 import { takerRouter } from "./routes/taker.routes";
+import { serviceRouter } from "./routes/service.routes";
 
 const app = express();
 dotenv.config();
@@ -76,6 +77,7 @@ connectDatabase()
         app.use("/admin", adminRouter)
         app.use("/lender", lenderRouter)
         app.use("/taker", takerRouter)
+        app.use("/service", serviceRouter)
         app.listen(app.get("port"), () => {
             console.log(`Server running on port ${app.get("port")}`);
         })
