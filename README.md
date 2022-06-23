@@ -70,7 +70,7 @@ Start the server
 
 ## Website
 
-[MovE](https://admin.demodaymove.tech/) https://admin.demodaymove.tech/
+[MovE](https://demodaymove.tech/) https://demodaymove.tech/
 
 ## Screenshots
 
