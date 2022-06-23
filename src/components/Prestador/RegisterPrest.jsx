@@ -16,7 +16,7 @@ const RegisterPrest = () => {
     console.log(formValues);
     const user = JSON.parse(localStorage.getItem("user")) || "";
     console.log(user);
-    fetch("http://35.211.155.160:5000/auth/users/lender", {
+    fetch("http://api.demodaymove/auth/users/lender", {
       body: JSON.stringify({
         cc_user_fk: formValues.cc_user_fk,
         conductor: formValues.conductor,
