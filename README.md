@@ -70,7 +70,7 @@ Start the server
 
 ## Website
 
-[MovE](https://move-89a33.web.app/) https://move-89a33.web.app/
+[MovE](https://demodaymove.tech/) https://demodaymove.tech/
 
 ## Screenshots
 
