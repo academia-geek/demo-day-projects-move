@@ -1,5 +1,5 @@
 export const templateEmailValidation = (name: string, code: string) => {
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
 
     <html lang="en">
       <head>
@@ -523,7 +523,7 @@ export const templateEmailValidation = (name: string, code: string) => {
                                               text-decoration: none;
                                               text-align: center;
                                             "
-                                            href="http://35.211.155.160:5000/auth/activation-email/${code}"
+                                            href="https://api.demodaymove.tech/auth/activation-email/${code}"
                                           >
                                             <button
                                               style="
@@ -620,7 +620,7 @@ export const templateEmailValidation = (name: string, code: string) => {
                                         <td>
                                           <p>
                                             <a
-                                              href="https://move-89a33.web.app/"
+                                              href="https://demodaymove.tech/"
                                               style="
                                                 color: #fff;
                                                 text-decoration: none;
@@ -689,8 +689,8 @@ export const templateEmailValidation = (name: string, code: string) => {
     `
 }
 
-export const templateEmailAdmin = (message: string, name?:string)=> {
-    return `<!DOCTYPE html>
+export const templateEmailAdmin = (message: string, name?: string) => {
+  return `<!DOCTYPE html>
 
     <html lang="en">
       <head>
@@ -1213,7 +1213,7 @@ export const templateEmailAdmin = (message: string, name?:string)=> {
                                               text-decoration: none;
                                               text-align: center;
                                             "
-                                            href="https://move-89a33.web.app/login"
+                                            href="https://demodaymove.tech/login"
                                           >
                                             <button
                                               style="
@@ -1310,7 +1310,7 @@ export const templateEmailAdmin = (message: string, name?:string)=> {
                                         <td>
                                           <p>
                                             <a
-                                              href="https://move-89a33.web.app/"
+                                              href="https://demodaymove.tech/"
                                               style="
                                                 color: #fff;
                                                 text-decoration: none;

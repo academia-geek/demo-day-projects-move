@@ -18,7 +18,8 @@ const app = express();
 dotenv.config();
 
 app.use(cors())
-app.set("port", process.env.PORT || 5000);
+app.set("port", process.env.PORT || 8080);
+app.enable('trust proxy');
 
 const swaggerSpec = {
     definition: {
@@ -39,7 +40,7 @@ const swaggerSpec = {
                 description: "Local"
             },
             {
-                url: "FOR CONFIGURATION",
+                url: "https://api.demodaymove.tech/",
                 description: "Servidor"
             }
         ],
@@ -53,16 +54,16 @@ app.get('/', (req, res) => {
         {
             info: "Endpoint con Autorizacion por token",
             auth: "Para poder acceder a los datos se debe logear este devuelve un token",
-            urlLocal: "http://35.211.155.160:5000/auth/login",
-            pd: "Si no tienes creada una cuenta para logearte puedes ingresar a la siguiente url: http://localhost:5000/auth/signin"
+            urlLocal: "https://api.demodaymove.tech/auth/login",
+            pd: "Si no tienes creada una cuenta para logearte puedes ingresar a la siguiente url: https://api.demodaymove.tech/auth/signin"
         },
         {
             info: "Servidor local con token",
-            url: "http://35.211.155.160:5000/vehicles"
+            url: "https://api.demodaymove.tech/vehicles"
         },
         {
             info: "Documentacion de la API",
-            url: "http://35.211.155.160:5000/api-docs"
+            url: "https://api.demodaymove.tech/api-docs"
         }
     ])
 })
