@@ -15,7 +15,7 @@ const Profile = () => {
     e.preventDefault();
     console.log(formValues);
     const user = JSON.parse(localStorage.getItem("user")) || "";
-    fetch("http://35.211.155.160:5000/auth/users/", {
+    fetch("https://api.demodaymove.tech/auth/users/", {
       body: JSON.stringify({
         cc_user: formValues.cc_user,
         first_name: formValues.first_name,
