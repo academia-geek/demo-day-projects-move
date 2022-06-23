@@ -1,9 +1,9 @@
-export const urlv = "http://api.demodaymove/vehicles/";
+export const urlv = "https://api.demodaymove.tech/vehicles/";
 
-export const urlgalta = "http://api.demodaymove/vehicles/filter/alta";
+export const urlgalta = "https://api.demodaymove.tech/vehicles/filter/alta";
 
-export const urlgmedia = "http://api.demodaymove/vehicles/filter/media";
+export const urlgmedia = "https://api.demodaymove.tech/vehicles/filter/media";
 
-export const urlgecono = "http://api.demodaymove/vehicles/filter/baja";
+export const urlgecono = "https://api.demodaymove.tech/vehicles/filter/baja";
 
-export const urlgelect = "http://api.demodaymove/vehicles/type-filter/electricos";
+export const urlgelect = "https://api.demodaymove.tech/vehicles/type-filter/electricos";
