@@ -17,7 +17,7 @@ const HomeP = () => {
     const user = JSON.parse(localStorage.getItem("user")) || "";
     axios({
       method: "POST",
-      url: "http://api.demodaymove/vehicles",
+      url: "https://api.demodaymove.tech/vehicles",
       data: {
         cc_owner: formValues.cc_owner,
         placa: formValues.placa,
